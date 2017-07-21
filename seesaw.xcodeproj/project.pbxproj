@@ -1,0 +1,443 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8C04445F1F1B000C0025C4B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C04445E1F1B000C0025C4B4 /* AppDelegate.swift */; };
+		8C0444611F1B000C0025C4B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0444601F1B000C0025C4B4 /* ViewController.swift */; };
+		8C0444641F1B000C0025C4B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C0444621F1B000C0025C4B4 /* Main.storyboard */; };
+		8C0444661F1B000C0025C4B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C0444651F1B000C0025C4B4 /* Assets.xcassets */; };
+		8C0444691F1B000C0025C4B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C0444671F1B000C0025C4B4 /* LaunchScreen.storyboard */; };
+		8C0E45A91F1B137D00D8E379 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0E45A81F1B137D00D8E379 /* CustomCell.swift */; };
+		8C38F0751F1BB4CE00F7861D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38F0741F1BB4CE00F7861D /* Extension.swift */; };
+		8C43F26F1F1CE7BC00E72426 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43F26E1F1CE7BC00E72426 /* JournalViewController.swift */; };
+		8C43F2711F1D061300E72426 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43F2701F1D061300E72426 /* CameraViewController.swift */; };
+		8C7BE8CB1F1D153F00630A9A /* CameraBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7BE8CA1F1D153F00630A9A /* CameraBViewController.swift */; };
+		8C7BE8CD1F1DBF0000630A9A /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7BE8CC1F1DBF0000630A9A /* PhotoViewController.swift */; };
+		8C7BE8CF1F1E5C4F00630A9A /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7BE8CE1F1E5C4F00630A9A /* RecordingViewController.swift */; };
+		8C7BE8D11F21FE9600630A9A /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7BE8D01F21FE9600630A9A /* DefaultViewController.swift */; };
+		8C7BE8D51F22080100630A9A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7BE8D41F22080100630A9A /* SWRevealViewController.m */; };
+		BB419110CAC2AF18364B7533 /* Pods_seesaw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E05F39239CDC4F9D378CD4FD /* Pods_seesaw.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		55BF1CF54986DACB2819DADB /* Pods-seesaw.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seesaw.release.xcconfig"; path = "Pods/Target Support Files/Pods-seesaw/Pods-seesaw.release.xcconfig"; sourceTree = "<group>"; };
+		5DC6FD13639CD0E782C7C6D0 /* Pods-seesaw.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seesaw.debug.xcconfig"; path = "Pods/Target Support Files/Pods-seesaw/Pods-seesaw.debug.xcconfig"; sourceTree = "<group>"; };
+		8C04445B1F1B000C0025C4B4 /* seesaw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seesaw.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C04445E1F1B000C0025C4B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8C0444601F1B000C0025C4B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8C0444631F1B000C0025C4B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8C0444651F1B000C0025C4B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8C0444681F1B000C0025C4B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8C04446A1F1B000C0025C4B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C0E45A81F1B137D00D8E379 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		8C38F0741F1BB4CE00F7861D /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		8C43F26E1F1CE7BC00E72426 /* JournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
+		8C43F2701F1D061300E72426 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		8C7BE8CA1F1D153F00630A9A /* CameraBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraBViewController.swift; sourceTree = "<group>"; };
+		8C7BE8CC1F1DBF0000630A9A /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		8C7BE8CE1F1E5C4F00630A9A /* RecordingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
+		8C7BE8D01F21FE9600630A9A /* DefaultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultViewController.swift; sourceTree = "<group>"; };
+		8C7BE8D21F22080100630A9A /* seesaw-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "seesaw-Bridging-Header.h"; sourceTree = "<group>"; };
+		8C7BE8D31F22080100630A9A /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
+		8C7BE8D41F22080100630A9A /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
+		E05F39239CDC4F9D378CD4FD /* Pods_seesaw.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_seesaw.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8C0444581F1B000C0025C4B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB419110CAC2AF18364B7533 /* Pods_seesaw.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7E67FF85D820C04E3B94104B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5DC6FD13639CD0E782C7C6D0 /* Pods-seesaw.debug.xcconfig */,
+				55BF1CF54986DACB2819DADB /* Pods-seesaw.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8358D4F8173C059FC75DA107 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E05F39239CDC4F9D378CD4FD /* Pods_seesaw.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8C0444521F1B000C0025C4B4 = {
+			isa = PBXGroup;
+			children = (
+				8C04445D1F1B000C0025C4B4 /* seesaw */,
+				8C04445C1F1B000C0025C4B4 /* Products */,
+				7E67FF85D820C04E3B94104B /* Pods */,
+				8358D4F8173C059FC75DA107 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8C04445C1F1B000C0025C4B4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8C04445B1F1B000C0025C4B4 /* seesaw.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8C04445D1F1B000C0025C4B4 /* seesaw */ = {
+			isa = PBXGroup;
+			children = (
+				8C38F0731F1BB4A700F7861D /* extension */,
+				8C04445E1F1B000C0025C4B4 /* AppDelegate.swift */,
+				8C7BE8D01F21FE9600630A9A /* DefaultViewController.swift */,
+				8C0444601F1B000C0025C4B4 /* ViewController.swift */,
+				8C43F26E1F1CE7BC00E72426 /* JournalViewController.swift */,
+				8C43F2701F1D061300E72426 /* CameraViewController.swift */,
+				8C7BE8CE1F1E5C4F00630A9A /* RecordingViewController.swift */,
+				8C7BE8CC1F1DBF0000630A9A /* PhotoViewController.swift */,
+				8C7BE8D31F22080100630A9A /* SWRevealViewController.h */,
+				8C7BE8D41F22080100630A9A /* SWRevealViewController.m */,
+				8C0444621F1B000C0025C4B4 /* Main.storyboard */,
+				8C0444651F1B000C0025C4B4 /* Assets.xcassets */,
+				8C0444671F1B000C0025C4B4 /* LaunchScreen.storyboard */,
+				8C04446A1F1B000C0025C4B4 /* Info.plist */,
+				8C0E45A81F1B137D00D8E379 /* CustomCell.swift */,
+				8C7BE8CA1F1D153F00630A9A /* CameraBViewController.swift */,
+				8C7BE8D21F22080100630A9A /* seesaw-Bridging-Header.h */,
+			);
+			path = seesaw;
+			sourceTree = "<group>";
+		};
+		8C38F0731F1BB4A700F7861D /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				8C38F0741F1BB4CE00F7861D /* Extension.swift */,
+			);
+			name = extension;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8C04445A1F1B000C0025C4B4 /* seesaw */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C04446D1F1B000C0025C4B4 /* Build configuration list for PBXNativeTarget "seesaw" */;
+			buildPhases = (
+				067FC069429B599BC3A351BD /* [CP] Check Pods Manifest.lock */,
+				8C0444571F1B000C0025C4B4 /* Sources */,
+				8C0444581F1B000C0025C4B4 /* Frameworks */,
+				8C0444591F1B000C0025C4B4 /* Resources */,
+				D4ECFCBE7CC5386399CF4127 /* [CP] Embed Pods Frameworks */,
+				EB8BEC28FF884A15DFE25BB0 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = seesaw;
+			productName = seesaw;
+			productReference = 8C04445B1F1B000C0025C4B4 /* seesaw.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8C0444531F1B000C0025C4B4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Ricardo;
+				TargetAttributes = {
+					8C04445A1F1B000C0025C4B4 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 563L8XQYD8;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8C0444561F1B000C0025C4B4 /* Build configuration list for PBXProject "seesaw" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8C0444521F1B000C0025C4B4;
+			productRefGroup = 8C04445C1F1B000C0025C4B4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8C04445A1F1B000C0025C4B4 /* seesaw */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8C0444591F1B000C0025C4B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C0444691F1B000C0025C4B4 /* LaunchScreen.storyboard in Resources */,
+				8C0444661F1B000C0025C4B4 /* Assets.xcassets in Resources */,
+				8C0444641F1B000C0025C4B4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		067FC069429B599BC3A351BD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D4ECFCBE7CC5386399CF4127 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-seesaw/Pods-seesaw-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB8BEC28FF884A15DFE25BB0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-seesaw/Pods-seesaw-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8C0444571F1B000C0025C4B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C7BE8D11F21FE9600630A9A /* DefaultViewController.swift in Sources */,
+				8C0444611F1B000C0025C4B4 /* ViewController.swift in Sources */,
+				8C7BE8CF1F1E5C4F00630A9A /* RecordingViewController.swift in Sources */,
+				8C0E45A91F1B137D00D8E379 /* CustomCell.swift in Sources */,
+				8C04445F1F1B000C0025C4B4 /* AppDelegate.swift in Sources */,
+				8C38F0751F1BB4CE00F7861D /* Extension.swift in Sources */,
+				8C43F26F1F1CE7BC00E72426 /* JournalViewController.swift in Sources */,
+				8C7BE8CD1F1DBF0000630A9A /* PhotoViewController.swift in Sources */,
+				8C7BE8D51F22080100630A9A /* SWRevealViewController.m in Sources */,
+				8C7BE8CB1F1D153F00630A9A /* CameraBViewController.swift in Sources */,
+				8C43F2711F1D061300E72426 /* CameraViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8C0444621F1B000C0025C4B4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8C0444631F1B000C0025C4B4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8C0444671F1B000C0025C4B4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8C0444681F1B000C0025C4B4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8C04446B1F1B000C0025C4B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8C04446C1F1B000C0025C4B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8C04446E1F1B000C0025C4B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DC6FD13639CD0E782C7C6D0 /* Pods-seesaw.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 563L8XQYD8;
+				INFOPLIST_FILE = seesaw/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ricardo.com.seesaw;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "seesaw/seesaw-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		8C04446F1F1B000C0025C4B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55BF1CF54986DACB2819DADB /* Pods-seesaw.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 563L8XQYD8;
+				INFOPLIST_FILE = seesaw/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ricardo.com.seesaw;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "seesaw/seesaw-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8C0444561F1B000C0025C4B4 /* Build configuration list for PBXProject "seesaw" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C04446B1F1B000C0025C4B4 /* Debug */,
+				8C04446C1F1B000C0025C4B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C04446D1F1B000C0025C4B4 /* Build configuration list for PBXNativeTarget "seesaw" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C04446E1F1B000C0025C4B4 /* Debug */,
+				8C04446F1F1B000C0025C4B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8C0444531F1B000C0025C4B4 /* Project object */;
+}
