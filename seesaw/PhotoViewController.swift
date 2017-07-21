@@ -16,11 +16,50 @@ class PhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setButtonImg()
+        
         photoImgView.image = photoImage
         
         // Do any additional setup after loading the view.
     }
-    @IBAction func cancelBtnClick(_ sender: Any) {
+    
+    
+    func setButtonImg(){
+        let cancelButton = UIButton.init(type: .custom)
+        
+        cancelButton.setImage(UIImage(named: "cancelImg.png"), for: UIControlState.normal)
+        
+        cancelButton.addTarget(self, action: #selector(PhotoViewController.cancelBtnClick(_:)), for: UIControlEvents.touchUpInside)
+        
+        cancelButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        
+        let setCameraBarButton = UIBarButtonItem(customView: cancelButton)
+        
+        self.navigationItem.leftBarButtonItem = setCameraBarButton
+        
+        
+        
+        let okButton = UIButton.init(type: .custom)
+        
+        okButton.setImage(UIImage(named: "okImg.png"), for: UIControlState.normal)
+        
+        okButton.addTarget(self, action: #selector(PhotoViewController.okBtnClick), for: UIControlEvents.touchUpInside)
+        
+        okButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        
+        let okBarButton = UIBarButtonItem(customView: okButton)
+        
+        self.navigationItem.rightBarButtonItem = okBarButton
+        
+
+        
+    }
+    
+    func okBtnClick(){
+        
+    }
+    
+    func cancelBtnClick(_ sender: Any) {
         
         let optionMenu = UIAlertController(title: nil, message: "确定重新拍照吗？", preferredStyle: .actionSheet)
         
@@ -30,14 +69,10 @@ class PhotoViewController: UIViewController {
             
         })
         
-//        let sendAnnouncement = UIAlertAction(title: "发送通知", style: .default, handler: {
-//            (alert: UIAlertAction!) -> Void in
-//            print("send announcement")
-//        })
-//        
+     
         let cancelAction = UIAlertAction(title: "放弃", style: .cancel, handler:  {
             (alert: UIAlertAction!) -> Void in
-        })
+    })
         
         
         
@@ -55,14 +90,6 @@ class PhotoViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

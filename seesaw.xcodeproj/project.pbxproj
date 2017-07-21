@@ -12,11 +12,15 @@
 		8C0444641F1B000C0025C4B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C0444621F1B000C0025C4B4 /* Main.storyboard */; };
 		8C0444661F1B000C0025C4B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C0444651F1B000C0025C4B4 /* Assets.xcassets */; };
 		8C0444691F1B000C0025C4B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C0444671F1B000C0025C4B4 /* LaunchScreen.storyboard */; };
+		8C05F7221F22500100DE2D57 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F7211F22500100DE2D57 /* MenuViewController.swift */; };
+		8C05F7261F2250A800DE2D57 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F7251F2250A800DE2D57 /* MenuTableViewCell.swift */; };
+		8C05F72C1F22876B00DE2D57 /* TeacherSignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F72B1F22876B00DE2D57 /* TeacherSignViewController.swift */; };
+		8C05F72E1F2288AA00DE2D57 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F72D1F2288AA00DE2D57 /* StartViewController.swift */; };
+		8C05F7301F2289FB00DE2D57 /* CreateAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F72F1F2289FB00DE2D57 /* CreateAccountTableViewController.swift */; };
 		8C0E45A91F1B137D00D8E379 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0E45A81F1B137D00D8E379 /* CustomCell.swift */; };
 		8C38F0751F1BB4CE00F7861D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38F0741F1BB4CE00F7861D /* Extension.swift */; };
 		8C43F26F1F1CE7BC00E72426 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43F26E1F1CE7BC00E72426 /* JournalViewController.swift */; };
 		8C43F2711F1D061300E72426 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43F2701F1D061300E72426 /* CameraViewController.swift */; };
-		8C7BE8CB1F1D153F00630A9A /* CameraBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7BE8CA1F1D153F00630A9A /* CameraBViewController.swift */; };
 		8C7BE8CD1F1DBF0000630A9A /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7BE8CC1F1DBF0000630A9A /* PhotoViewController.swift */; };
 		8C7BE8CF1F1E5C4F00630A9A /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7BE8CE1F1E5C4F00630A9A /* RecordingViewController.swift */; };
 		8C7BE8D11F21FE9600630A9A /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7BE8D01F21FE9600630A9A /* DefaultViewController.swift */; };
@@ -34,11 +38,15 @@
 		8C0444651F1B000C0025C4B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C0444681F1B000C0025C4B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C04446A1F1B000C0025C4B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C05F7211F22500100DE2D57 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		8C05F7251F2250A800DE2D57 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		8C05F72B1F22876B00DE2D57 /* TeacherSignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherSignViewController.swift; sourceTree = "<group>"; };
+		8C05F72D1F2288AA00DE2D57 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		8C05F72F1F2289FB00DE2D57 /* CreateAccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountTableViewController.swift; sourceTree = "<group>"; };
 		8C0E45A81F1B137D00D8E379 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		8C38F0741F1BB4CE00F7861D /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		8C43F26E1F1CE7BC00E72426 /* JournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		8C43F2701F1D061300E72426 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		8C7BE8CA1F1D153F00630A9A /* CameraBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraBViewController.swift; sourceTree = "<group>"; };
 		8C7BE8CC1F1DBF0000630A9A /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		8C7BE8CE1F1E5C4F00630A9A /* RecordingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
 		8C7BE8D01F21FE9600630A9A /* DefaultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultViewController.swift; sourceTree = "<group>"; };
@@ -104,8 +112,8 @@
 				8C0444601F1B000C0025C4B4 /* ViewController.swift */,
 				8C43F26E1F1CE7BC00E72426 /* JournalViewController.swift */,
 				8C43F2701F1D061300E72426 /* CameraViewController.swift */,
-				8C7BE8CE1F1E5C4F00630A9A /* RecordingViewController.swift */,
 				8C7BE8CC1F1DBF0000630A9A /* PhotoViewController.swift */,
+				8C7BE8CE1F1E5C4F00630A9A /* RecordingViewController.swift */,
 				8C7BE8D31F22080100630A9A /* SWRevealViewController.h */,
 				8C7BE8D41F22080100630A9A /* SWRevealViewController.m */,
 				8C0444621F1B000C0025C4B4 /* Main.storyboard */,
@@ -113,8 +121,12 @@
 				8C0444671F1B000C0025C4B4 /* LaunchScreen.storyboard */,
 				8C04446A1F1B000C0025C4B4 /* Info.plist */,
 				8C0E45A81F1B137D00D8E379 /* CustomCell.swift */,
-				8C7BE8CA1F1D153F00630A9A /* CameraBViewController.swift */,
 				8C7BE8D21F22080100630A9A /* seesaw-Bridging-Header.h */,
+				8C05F7211F22500100DE2D57 /* MenuViewController.swift */,
+				8C05F7251F2250A800DE2D57 /* MenuTableViewCell.swift */,
+				8C05F72B1F22876B00DE2D57 /* TeacherSignViewController.swift */,
+				8C05F72D1F2288AA00DE2D57 /* StartViewController.swift */,
+				8C05F72F1F2289FB00DE2D57 /* CreateAccountTableViewController.swift */,
 			);
 			path = seesaw;
 			sourceTree = "<group>";
@@ -252,16 +264,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C05F7301F2289FB00DE2D57 /* CreateAccountTableViewController.swift in Sources */,
 				8C7BE8D11F21FE9600630A9A /* DefaultViewController.swift in Sources */,
+				8C05F72E1F2288AA00DE2D57 /* StartViewController.swift in Sources */,
 				8C0444611F1B000C0025C4B4 /* ViewController.swift in Sources */,
+				8C05F7261F2250A800DE2D57 /* MenuTableViewCell.swift in Sources */,
 				8C7BE8CF1F1E5C4F00630A9A /* RecordingViewController.swift in Sources */,
 				8C0E45A91F1B137D00D8E379 /* CustomCell.swift in Sources */,
+				8C05F72C1F22876B00DE2D57 /* TeacherSignViewController.swift in Sources */,
+				8C05F7221F22500100DE2D57 /* MenuViewController.swift in Sources */,
 				8C04445F1F1B000C0025C4B4 /* AppDelegate.swift in Sources */,
 				8C38F0751F1BB4CE00F7861D /* Extension.swift in Sources */,
 				8C43F26F1F1CE7BC00E72426 /* JournalViewController.swift in Sources */,
 				8C7BE8CD1F1DBF0000630A9A /* PhotoViewController.swift in Sources */,
 				8C7BE8D51F22080100630A9A /* SWRevealViewController.m in Sources */,
-				8C7BE8CB1F1D153F00630A9A /* CameraBViewController.swift in Sources */,
 				8C43F2711F1D061300E72426 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

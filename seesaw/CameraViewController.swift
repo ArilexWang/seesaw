@@ -27,7 +27,7 @@ class CameraViewController: UIViewController {
     
     
     
-    @IBAction func setCamera(_ sender: Any) {
+    func setCamera(_ sender: Any) {
         frontCamera = !frontCamera
         captureSession.beginConfiguration()
         let inputs = captureSession.inputs as! [AVCaptureInput]
@@ -64,15 +64,53 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setButton()
+        
         captureSession.sessionPreset = AVCaptureSessionPresetPhoto
+        
         frontCamera(frontCamera)
+        
         if captureDevice != nil{
             beginSession()
         }
         
         // Do any additional setup after loading the view.
     }
-
+    
+    func setButton(){
+        let setCameraButton = UIButton.init(type: .custom)
+        
+        setCameraButton.setImage(UIImage(named: "turnCameraImg.png"), for: UIControlState.normal)
+        
+        setCameraButton.addTarget(self, action: #selector(CameraViewController.setCamera(_:)), for: UIControlEvents.touchUpInside)
+        
+        setCameraButton.frame = CGRect(x: 0, y: 0, width: 33, height: 24)
+        
+        let setCameraBarButton = UIBarButtonItem(customView: setCameraButton)
+        
+        self.navigationItem.rightBarButtonItem = setCameraBarButton
+        
+        let backButton = UIButton.init(type: .custom)
+        
+        backButton.setImage(UIImage(named: "backImg.png"), for: UIControlState.normal)
+        
+        backButton.addTarget(self, action: #selector(CameraViewController.backBtnClick), for: UIControlEvents.touchUpInside)
+        
+        backButton.frame = CGRect(x: 0, y: 0, width: 15, height: 24)
+        
+        let backBarButton = UIBarButtonItem(customView: backButton)
+        
+        self.navigationItem.leftBarButtonItem = backBarButton
+        
+        
+        
+    }
+    
+    func backBtnClick(){
+        performSegue(withIdentifier: "segue_backToItem", sender: self)
+    }
+    
+    
     func beginSession(){
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         self.cameraView.layer.addSublayer(previewLayer!)
