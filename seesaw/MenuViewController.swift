@@ -12,10 +12,13 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var menuNameArr:Array = [String]()
     var iconImage:Array = [UIImage]()
     
+    @IBOutlet weak var userName: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        userName.text = Global_userName
+        
         menuNameArr = ["课程名称"]
         iconImage = [UIImage(named:"defaultClassImg.png")!]
         // Do any additional setup after loading the view.

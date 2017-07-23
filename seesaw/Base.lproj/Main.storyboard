@@ -377,7 +377,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1495" y="-1040"/>
+            <point key="canvasLocation" x="2481" y="-1015"/>
         </scene>
         <!--课程名称-->
         <scene sceneID="1Su-DM-6jd">
@@ -771,6 +771,13 @@
                                     <color key="titleColor" red="0.33957517147064209" green="0.62246596813201904" blue="0.88422483205795288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oab-LD-CuK">
+                                <rect key="frame" x="25" y="28" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -782,6 +789,9 @@
                             <constraint firstItem="Iul-Rs-HiP" firstAttribute="top" secondItem="TCb-Pl-ZVr" secondAttribute="bottom" constant="85" id="wNB-WJ-g4g"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="userName" destination="Oab-LD-CuK" id="yae-wu-jth"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5cA-cu-Iql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1020,11 +1030,12 @@
                         <outlet property="firstNameText" destination="lpu-gy-kZi" id="koL-ol-p5o"/>
                         <outlet property="passwordText" destination="adW-33-IeE" id="xDD-Ss-e4y"/>
                         <segue destination="uQW-0e-GkG" kind="show" identifier="backToSign" id="cCq-a4-IJK"/>
+                        <segue destination="x53-QD-XXx" kind="show" identifier="segueToDefault" id="SSW-qL-9re"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUa-51-6yU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-100" y="12"/>
+            <point key="canvasLocation" x="-140" y="12"/>
         </scene>
     </scenes>
     <resources>
@@ -1050,8 +1061,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cCq-a4-IJK"/>
-        <segue reference="lQI-n4-ewi"/>
-        <segue reference="XcG-mQ-UKS"/>
         <segue reference="w3m-OB-E4x"/>
+        <segue reference="lQI-n4-ewi"/>
+        <segue reference="MDH-ym-rtR"/>
     </inferredMetricsTieBreakers>
 </document>

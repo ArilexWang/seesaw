@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SwiftHTTP
+
+var Global_userName:String?
 
 class CreateAccountTableViewController: UITableViewController, UITextFieldDelegate {
 
@@ -81,6 +84,31 @@ class CreateAccountTableViewController: UITableViewController, UITextFieldDelega
         else if passwordText.text == ""{
             let message: String = "请输入您的密码"
             createAlert(titleText: "错误", messageText: message)
+        }
+            
+        //right input
+        else {
+        
+            let name: String = firstNameText.text!
+            let email: String = emailText.text!
+            let password: String = passwordText.text!
+            
+            let parameters = ["username": name,"email": email,"password": password]
+            print(parameters) 
+            
+            
+            do{
+                let opt = try HTTP.POST("http://115.159.187.59:8000/index/",parameters: parameters)
+                opt.start{ response in
+                    
+                }
+            }catch let error{
+                print("error")
+            }
+            
+            Global_userName = name
+            performSegue(withIdentifier: "segueToDefault", sender: self)
+            
         }
     }
     
