@@ -8,18 +8,21 @@
 
 import UIKit
 
-class CreateAccountTableViewController: UITableViewController {
+class CreateAccountTableViewController: UITableViewController, UITextFieldDelegate {
 
+    
+    @IBOutlet weak var firstNameText: UITextField!
+    
+    @IBOutlet weak var emailText: UITextField!
+    
+    @IBOutlet weak var passwordText: UITextField!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setButton()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+       NotificationCenter.default.addObserver(self, selector: #selector(CreateAccountTableViewController.textDidEndEditing), name: NSNotification.Name.UITextFieldTextDidEndEditing, object: nil)
     }
     
     func setButton(){
@@ -53,10 +56,38 @@ class CreateAccountTableViewController: UITableViewController {
         performSegue(withIdentifier: "backToSign", sender: self)
     }
     
-    func okBtnClick(){
-        print("ok")
+    func createAlert(titleText: String, messageText: String){
+        let alert = UIAlertController(title: titleText, message: messageText, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            (action) in alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
+    
+    func okBtnClick(){
+        
+        if firstNameText.text == "" {
+            let message: String = "请输入您的姓名"
+            createAlert(titleText: "错误", messageText: message)
+        }
+      
+        else if emailText.text == ""{
+            let message: String = "请输入您的邮箱地址"
+            createAlert(titleText: "错误", messageText: message)
+        }
+        
+        else if passwordText.text == ""{
+            let message: String = "请输入您的密码"
+            createAlert(titleText: "错误", messageText: message)
+        }
+    }
+    
+    
+    func textDidEndEditing(){
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
