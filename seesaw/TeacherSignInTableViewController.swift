@@ -1,32 +1,27 @@
 //
-//  CreateAccountTableViewController.swift
+//  TeacherSignInTableViewController.swift
 //  seesaw
 //
-//  Created by Ricardo on 2017/7/22.
+//  Created by Ricardo on 2017/7/23.
 //  Copyright © 2017年 Ricardo. All rights reserved.
 //
 
 import UIKit
 import SwiftHTTP
 
-var Global_userName:String?
-var Global_userEmail:String?
+class TeacherSignInTableViewController: UITableViewController {
 
-class CreateAccountTableViewController: UITableViewController, UITextFieldDelegate {
-
-    
-    @IBOutlet weak var firstNameText: UITextField!
-    
     @IBOutlet weak var emailText: UITextField!
-    
     @IBOutlet weak var passwordText: UITextField!
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setButton()
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
 
-       NotificationCenter.default.addObserver(self, selector: #selector(CreateAccountTableViewController.textDidEndEditing), name: NSNotification.Name.UITextFieldTextDidEndEditing, object: nil)
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     func setButton(){
@@ -57,8 +52,9 @@ class CreateAccountTableViewController: UITableViewController, UITextFieldDelega
     }
     
     func backBtnClick(){
-        performSegue(withIdentifier: "backToSign", sender: self)
+        performSegue(withIdentifier: "back", sender: self)
     }
+    
     
     func createAlert(titleText: String, messageText: String){
         let alert = UIAlertController(title: titleText, message: messageText, preferredStyle: .alert)
@@ -69,77 +65,37 @@ class CreateAccountTableViewController: UITableViewController, UITextFieldDelega
         DispatchQueue.main.async {
             self.present(alert, animated: true, completion: nil)
         }
-
+        
     }
-    
-    
-    
     
     func okBtnClick(){
-        
-        if firstNameText.text == "" {
-            let message: String = "请输入您的姓名"
-            createAlert(titleText: "错误", messageText: message)
-        }
-      
-        else if emailText.text == ""{
-            let message: String = "请输入您的邮箱地址"
-            createAlert(titleText: "错误", messageText: message)
-        }
-        
-        else if passwordText.text == ""{
-            let message: String = "请输入您的密码"
-            createAlert(titleText: "错误", messageText: message)
-        }
-            
-        else if !isEamilValidation(string: emailText.text!){
-            let message: String = "请输入合法的邮箱地址"
-            createAlert(titleText: "错误", messageText: message)
-        }
-            
-        //right input
-        else {
-        
-            let name: String = firstNameText.text!
-            let email: String = emailText.text!
-            let password: String = passwordText.text!
-            
-            let parameters = ["username": name,"email": email,"password": password]
-            print(parameters) 
-            
-            
-            do{
-                let opt = try HTTP.POST("http://115.159.187.59:8000/index/",parameters: parameters)
-                opt.start{ response in
-                    if let err = response.error{
-                        print(err.localizedDescription)
-                        let message:String = "该邮箱已注册"
-                        self.createAlert(titleText: "错误", messageText: message)
-                        
-                    }
-                    
-                    else{
-                        DispatchQueue.main.async {
-                            Global_userName = name
-                            self.performSegue(withIdentifier: "segueToClass", sender: self)
-                        }
-                        
-                    }
+        let email: String = emailText.text!
+        let password: String = passwordText.text!
+        do{
+        let opt = try HTTP.GET("http://115.159.187.59:8000/checkPassWord/",parameters: ["email": email, "password": password])
+        opt.start{ response in
+            if let err = response.error{
+                print(err.localizedDescription)
+                let message:String = "输入的用户名密码错误"
+                self.createAlert(titleText: "错误", messageText: message)
+
+            }
+            else{
+                DispatchQueue.main.async {
+                    Global_userName = response.text
+                    Global_userEmail = self.emailText.text
+                    self.performSegue(withIdentifier: "fromSignToDefault", sender: self)
                 }
-            }catch let error{
-                print("error")
+                //print("获取到数据：\(response.text)")
             }
             
-            
-            
         }
-    }
-    
-    
-    func textDidEndEditing(){
+        }catch let error {
+            print("请求失败：\(error)")
+        }
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -147,15 +103,15 @@ class CreateAccountTableViewController: UITableViewController, UITextFieldDelega
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
+    //override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+    //    return 0
+    //}
+
+    //override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+      //  return 0
+    //}
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

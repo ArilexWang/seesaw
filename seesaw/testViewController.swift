@@ -26,6 +26,7 @@ class testViewController: UIViewController {
         }.resume()
     }
     
+   
     @IBAction func postBtnClick(_ sender: Any) {
         guard let url = URL(string: "http://115.159.187.59:8000/index/") else {return}
         let parameters = ["username": "alex","email": "123@qq.com","password": "123456"]

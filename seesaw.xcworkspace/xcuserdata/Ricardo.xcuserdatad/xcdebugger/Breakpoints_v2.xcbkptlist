@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seesaw/Extension.swift"
-            timestampString = "521979411.937416"
+            timestampString = "522573026.767765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "startOfMonth()"
             landmarkType = "7">
          </BreakpointContent>
@@ -209,6 +209,131 @@
             endingLineNumber = "64"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seesaw/TeacherSignInTableViewController.swift"
+            timestampString = "522517284.432915"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "TeacherSignInTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "seesaw.TeacherSignInTableViewController.emailText.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
+                  moduleName = "seesaw"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Ricardo/Swift/seesaw/seesaw/TeacherSignInTableViewController.swift"
+                  timestampString = "522517285.617818"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "seesaw.TeacherSignInTableViewController.emailText.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
+                  moduleName = "seesaw"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Ricardo/Swift/seesaw/seesaw/TeacherSignInTableViewController.swift"
+                  timestampString = "522517285.619397"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "seesaw.TeacherSignInTableViewController.init (style : __C.UITableViewStyle) -&gt; seesaw.TeacherSignInTableViewController"
+                  moduleName = "seesaw"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Ricardo/Swift/seesaw/seesaw/TeacherSignInTableViewController.swift"
+                  timestampString = "522517285.620698"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "seesaw.TeacherSignInTableViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; seesaw.TeacherSignInTableViewController"
+                  moduleName = "seesaw"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Ricardo/Swift/seesaw/seesaw/TeacherSignInTableViewController.swift"
+                  timestampString = "522517285.621909"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "70">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "seesaw.TeacherSignInTableViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;seesaw.TeacherSignInTableViewController&gt;"
+                  moduleName = "seesaw"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Ricardo/Swift/seesaw/seesaw/TeacherSignInTableViewController.swift"
+                  timestampString = "522517285.623116"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seesaw/CreateClassTableViewController.swift"
+            timestampString = "522609744.984071"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "CreateClassTableViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seesaw/CreateClassTableViewController.swift"
+            timestampString = "522613750.321287"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "CreateClassTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
