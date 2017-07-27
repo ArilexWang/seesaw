@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftHTTP
 
 class PhotoViewController: UIViewController {
     var photoImage:UIImage?
@@ -55,8 +56,66 @@ class PhotoViewController: UIViewController {
         
     }
     
-    func okBtnClick(){
+    func saveImageToDocumentDirectory(_ chosenImage: UIImage) -> String {
+        let directoryPath =  NSHomeDirectory().appending("/Documents/")
+        if !FileManager.default.fileExists(atPath: directoryPath) {
+            do {
+                try FileManager.default.createDirectory(at: NSURL.fileURL(withPath: directoryPath), withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                print(error)
+            }
+        }
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMddhhmmss"
+        
+        let currentDateString = dateFormatter.string(from: Date())
+        
+        let filename = currentDateString.appending(".jpg")
+    
+        let filepath = directoryPath.appending(filename)
+        let url = NSURL.fileURL(withPath: filepath)
+        do {
+            print(filepath)
+            try UIImageJPEGRepresentation(chosenImage, 1.0)?.write(to: url, options: .atomic)
+            return String.init(filepath)
+            
+        } catch {
+            print(error)
+            print("file cant not be save at path \(filepath), with error : \(error)");
+            return filepath
+        }
+    }
+    
+    func okBtnClick(){
+        print(saveImageToDocumentDirectory(photoImage!))
+        let path = saveImageToDocumentDirectory(photoImage!)
+        print("imapath:\(path)")
+        let fileUrl = URL(fileURLWithPath: path)
+        do {
+            let serverController = serverAdd + "/uploadImg/"
+            print("currentid:\(currentCourseID)")
+            let opt = try HTTP.POST(serverController, parameters: ["email": Global_userEmail,"courseid": currentCourseID,"img": Upload(fileUrl: fileUrl)])
+            opt.start { response in
+                
+                if let err = response.error{
+                    print(err.localizedDescription)
+                   
+                }
+                    
+                else{
+                    print("data:\(response.data)")
+                    DispatchQueue.main.async {
+                        let image = UIImage(data: response.data)
+                        
+                    }
+                }
+            }
+            
+            
+        } catch let error {
+            print("got an error creating the request: \(error)")
+        }
     }
     
     func cancelBtnClick(_ sender: Any) {

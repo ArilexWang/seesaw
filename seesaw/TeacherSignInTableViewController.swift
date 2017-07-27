@@ -72,24 +72,32 @@ class TeacherSignInTableViewController: UITableViewController {
         let email: String = emailText.text!
         let password: String = passwordText.text!
         do{
-        let opt = try HTTP.GET("http://115.159.187.59:8000/checkPassWord/",parameters: ["email": email, "password": password])
-        opt.start{ response in
-            if let err = response.error{
-                print(err.localizedDescription)
-                let message:String = "输入的用户名密码错误"
-                self.createAlert(titleText: "错误", messageText: message)
+            let serverController = serverAdd + "/checkPassWord/"
+            let opt = try HTTP.GET(serverController,parameters: ["email": email, "password": password])
+            opt.start{ response in
+                if let err = response.error{
+                    print(err.localizedDescription)
+                    if(err.localizedDescription == "Could not connect to the server."){
+                        let message:String = "连接服务器失败"
+                        self.createAlert(titleText: "错误", messageText: message)
+                    }
+                    else{
+                        let message:String = "输入的用户名密码错误"
+                        self.createAlert(titleText: "错误", messageText: message)
+                    }
+                    
 
-            }
-            else{
-                DispatchQueue.main.async {
-                    Global_userName = response.text
-                    Global_userEmail = self.emailText.text
-                    self.performSegue(withIdentifier: "fromSignToDefault", sender: self)
                 }
-                //print("获取到数据：\(response.text)")
-            }
+                else{
+                    DispatchQueue.main.async {
+                        Global_userName = response.text
+                        Global_userEmail = self.emailText.text
+                        self.performSegue(withIdentifier: "fromSignToDefault", sender: self)
+                    }
+                    //print("获取到数据：\(response.text)")
+                }
             
-        }
+            }
         }catch let error {
             print("请求失败：\(error)")
         }

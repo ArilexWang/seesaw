@@ -1,12 +1,30 @@
 PODS:
+  - Alamofire (4.5.0)
+  - JSONJoy-Swift (3.0.1)
   - JTAppleCalendar (7.0.4)
+  - SwiftyJSON (3.1.4)
+  - TRON (2.0.1):
+    - Alamofire (~> 4.1)
+    - TRON/SwiftyJSON (= 2.0.1)
+  - TRON/Core (2.0.1):
+    - Alamofire (~> 4.1)
+  - TRON/SwiftyJSON (2.0.1):
+    - Alamofire (~> 4.1)
+    - SwiftyJSON (~> 3.1)
+    - TRON/Core
 
 DEPENDENCIES:
+  - JSONJoy-Swift (~> 3.0.0)
   - JTAppleCalendar (~> 7.0)
+  - TRON (~> 2.0.0)
 
 SPEC CHECKSUMS:
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  JSONJoy-Swift: ef6eccdcf319412f149bbdd031b27f0430d5d576
   JTAppleCalendar: 6def48ecd0daae1d5baaa45e813124c2a20b184d
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  TRON: 7b9adeb678fe0e25433d207f6a734aaf145fa9b5
 
-PODFILE CHECKSUM: 4794d4ffbc519cf89b931c0a66336bc2e7c9ac3b
+PODFILE CHECKSUM: 010918e5bad26bb6d82f2033d1a4695e7b77cd81
 
 COCOAPODS: 1.2.1

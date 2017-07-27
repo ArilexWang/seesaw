@@ -9,8 +9,6 @@
 import UIKit
 import SwiftHTTP
 
-var Global_userName:String?
-var Global_userEmail:String?
 
 class CreateAccountTableViewController: UITableViewController, UITextFieldDelegate {
 
@@ -109,13 +107,17 @@ class CreateAccountTableViewController: UITableViewController, UITextFieldDelega
             
             
             do{
-                let opt = try HTTP.POST("http://115.159.187.59:8000/index/",parameters: parameters)
+                let serverController = serverAdd + "/index"
+                let opt = try HTTP.POST(serverController,parameters: parameters)
                 opt.start{ response in
                     if let err = response.error{
-                        print(err.localizedDescription)
-                        let message:String = "该邮箱已注册"
-                        self.createAlert(titleText: "错误", messageText: message)
-                        
+                        if(err.localizedDescription == "Could not connect to the server."){
+                            let message:String = "连接服务器失败"
+                            self.createAlert(titleText: "错误", messageText: message)
+                        } else{
+                            let message:String = "该邮箱已注册"
+                            self.createAlert(titleText: "错误", messageText: message)
+                        }
                     }
                     
                     else{
@@ -123,7 +125,6 @@ class CreateAccountTableViewController: UITableViewController, UITextFieldDelega
                             Global_userName = name
                             self.performSegue(withIdentifier: "segueToClass", sender: self)
                         }
-                        
                     }
                 }
             }catch let error{

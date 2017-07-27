@@ -10,6 +10,7 @@ import UIKit
 import SwiftHTTP
 
 
+
 class CreateClassTableViewController: UITableViewController {
     
     @IBOutlet weak var tableCell: UITableViewCell!
@@ -74,7 +75,7 @@ class CreateClassTableViewController: UITableViewController {
     
     
     func cancelBtnClick(){
-        
+        performSegue(withIdentifier: "segueCreateCancel", sender: self)
     }
     
     func createAlert(titleText: String, messageText: String){
@@ -103,19 +104,22 @@ class CreateClassTableViewController: UITableViewController {
         //输入正确，向服务器发送请求
         else{
             let parameters = ["email": Global_userEmail,"courseName": strClassName,"grade":strGrade]
-            print(parameters)
+            //print(parameters)
             do{
-                let opt = try HTTP.POST("http://115.159.187.59:8000/createCourse/",parameters: parameters)
+                let serverController = serverAdd + "/createCourse/"
+                let opt = try HTTP.POST(serverController,parameters: parameters)
                 opt.start{ response in
                     if let err = response.error{
                         print(err.localizedDescription)
                     }
                         
                     else{
-                        print(response.description)
-                        //DispatchQueue.main.async {
-                            //self.performSegue(withIdentifier: "segueToClass", sender: self)
-                        //}
+                        //print(response.data)
+                        DispatchQueue.main.async {
+                            let notificationName = Notification.Name("CreateCourse")
+                            NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["PASS":"create new course"])
+                            self.performSegue(withIdentifier: "segueCreateDone", sender: self)
+                        }
                         
                     }
                 }
@@ -125,7 +129,7 @@ class CreateClassTableViewController: UITableViewController {
         }
         
         
-        print(Global_userEmail)
+        //print(Global_userEmail)
     }
     
     

@@ -31,6 +31,11 @@
 		8C7BE8CF1F1E5C4F00630A9A /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7BE8CE1F1E5C4F00630A9A /* RecordingViewController.swift */; };
 		8C7BE8D11F21FE9600630A9A /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7BE8D01F21FE9600630A9A /* DefaultViewController.swift */; };
 		8C7BE8D51F22080100630A9A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7BE8D41F22080100630A9A /* SWRevealViewController.m */; };
+		8CDD3F5E1F28751300A11EDE /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDD3F5D1F28751300A11EDE /* global.swift */; };
+		8CDD3F661F28D20B00A11EDE /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDD3F651F28D20B00A11EDE /* ItemTableViewCell.swift */; };
+		8CDD3F6A1F28F66600A11EDE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDD3F691F28F66600A11EDE /* Item.swift */; };
+		8CDD3F721F29EC2D00A11EDE /* ItemsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDD3F711F29EC2D00A11EDE /* ItemsResponse.swift */; };
+		8CDD3F741F29ED2000A11EDE /* MyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDD3F731F29ED2000A11EDE /* MyError.swift */; };
 		BB419110CAC2AF18364B7533 /* Pods_seesaw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E05F39239CDC4F9D378CD4FD /* Pods_seesaw.framework */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +142,11 @@
 		8C7BE8D21F22080100630A9A /* seesaw-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "seesaw-Bridging-Header.h"; sourceTree = "<group>"; };
 		8C7BE8D31F22080100630A9A /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
 		8C7BE8D41F22080100630A9A /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
+		8CDD3F5D1F28751300A11EDE /* global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
+		8CDD3F651F28D20B00A11EDE /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		8CDD3F691F28F66600A11EDE /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		8CDD3F711F29EC2D00A11EDE /* ItemsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsResponse.swift; sourceTree = "<group>"; };
+		8CDD3F731F29ED2000A11EDE /* MyError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyError.swift; sourceTree = "<group>"; };
 		E05F39239CDC4F9D378CD4FD /* Pods_seesaw.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_seesaw.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -195,6 +205,9 @@
 				8C38F0731F1BB4A700F7861D /* extension */,
 				8C04445E1F1B000C0025C4B4 /* AppDelegate.swift */,
 				8C7BE8D01F21FE9600630A9A /* DefaultViewController.swift */,
+				8CDD3F691F28F66600A11EDE /* Item.swift */,
+				8CDD3F711F29EC2D00A11EDE /* ItemsResponse.swift */,
+				8CDD3F651F28D20B00A11EDE /* ItemTableViewCell.swift */,
 				8C0444601F1B000C0025C4B4 /* ViewController.swift */,
 				8C43F26E1F1CE7BC00E72426 /* JournalViewController.swift */,
 				8C43F2701F1D061300E72426 /* CameraViewController.swift */,
@@ -217,6 +230,8 @@
 				8C1179FF1F24EE91003E7E95 /* TeacherSignInTableViewController.swift */,
 				8C117A0B1F2652F3003E7E95 /* CreateClassTableViewController.swift */,
 				8C19A3B91F265A9100E9F8D8 /* GradePickerViewController.swift */,
+				8CDD3F5D1F28751300A11EDE /* global.swift */,
+				8CDD3F731F29ED2000A11EDE /* MyError.swift */,
 			);
 			path = seesaw;
 			sourceTree = "<group>";
@@ -428,12 +443,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CDD3F741F29ED2000A11EDE /* MyError.swift in Sources */,
 				8C05F7301F2289FB00DE2D57 /* CreateAccountTableViewController.swift in Sources */,
 				8C7BE8D11F21FE9600630A9A /* DefaultViewController.swift in Sources */,
 				8C117A0C1F2652F3003E7E95 /* CreateClassTableViewController.swift in Sources */,
 				8C557CAF1F24981500F76A18 /* testViewController.swift in Sources */,
+				8CDD3F5E1F28751300A11EDE /* global.swift in Sources */,
 				8C05F72E1F2288AA00DE2D57 /* StartViewController.swift in Sources */,
+				8CDD3F6A1F28F66600A11EDE /* Item.swift in Sources */,
 				8C0444611F1B000C0025C4B4 /* ViewController.swift in Sources */,
+				8CDD3F721F29EC2D00A11EDE /* ItemsResponse.swift in Sources */,
 				8C117A001F24EE91003E7E95 /* TeacherSignInTableViewController.swift in Sources */,
 				8C05F7261F2250A800DE2D57 /* MenuTableViewCell.swift in Sources */,
 				8C19A3BA1F265A9100E9F8D8 /* GradePickerViewController.swift in Sources */,
@@ -446,6 +465,7 @@
 				8C43F26F1F1CE7BC00E72426 /* JournalViewController.swift in Sources */,
 				8C7BE8CD1F1DBF0000630A9A /* PhotoViewController.swift in Sources */,
 				8C7BE8D51F22080100630A9A /* SWRevealViewController.m in Sources */,
+				8CDD3F661F28D20B00A11EDE /* ItemTableViewCell.swift in Sources */,
 				8C43F2711F1D061300E72426 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
