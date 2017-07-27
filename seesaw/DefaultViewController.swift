@@ -62,6 +62,9 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
             })
             downloadPicTask.resume()
         }
+        else{
+            self.itemTableView.reloadData()
+        }
         
     }
     
@@ -82,6 +85,7 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     func updateItemImg(noti: Notification){
         self.itemImg = noti.userInfo?["PASS"] as! [UIImage]
+        print(self.itemImg.count)
         itemTableView.reloadData()
     }
     
@@ -178,7 +182,7 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
                     
                 else{
                     do{
-                        let myjson = try JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                        let myjson = try JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [AnyObject]
                         //获取图片的URL地址
                         DispatchQueue.main.async {
                             for i in 0..<myjson.count{

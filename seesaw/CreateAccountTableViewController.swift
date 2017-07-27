@@ -107,7 +107,7 @@ class CreateAccountTableViewController: UITableViewController, UITextFieldDelega
             
             
             do{
-                let serverController = serverAdd + "/index"
+                let serverController = serverAdd + "/index/"
                 let opt = try HTTP.POST(serverController,parameters: parameters)
                 opt.start{ response in
                     if let err = response.error{
@@ -123,6 +123,7 @@ class CreateAccountTableViewController: UITableViewController, UITextFieldDelega
                     else{
                         DispatchQueue.main.async {
                             Global_userName = name
+                            Global_userEmail = email
                             self.performSegue(withIdentifier: "segueToClass", sender: self)
                         }
                     }

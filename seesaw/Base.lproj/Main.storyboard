@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="s4O-xb-Zzs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fvR-zE-aPU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -549,7 +549,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PKG-sl-sh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4239" y="-490"/>
+            <point key="canvasLocation" x="-3090" y="-315"/>
         </scene>
         <!--教师登录-->
         <scene sceneID="6mX-0l-5P3">
@@ -757,11 +757,12 @@
                     <connections>
                         <outlet property="photoImgView" destination="Ikg-SF-N2H" id="i0x-Fu-Kf4"/>
                         <segue destination="SfW-wV-puo" kind="show" identifier="backToCamera" id="MDH-ym-rtR"/>
+                        <segue destination="x53-QD-XXx" kind="show" identifier="createItemSuccess" id="YZa-tr-kTJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hXr-jp-r0h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3129" y="896"/>
+            <point key="canvasLocation" x="2095" y="984"/>
         </scene>
         <!--录像-->
         <scene sceneID="Y7h-Jw-1HB">
@@ -818,7 +819,7 @@
                         <viewControllerLayoutGuide type="bottom" id="r6r-d1-D4b"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Kpc-fp-m8D">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -829,7 +830,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcB-dn-WQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1345" y="-1221"/>
+            <point key="canvasLocation" x="1172" y="-1221"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="EGE-NS-fJe">
@@ -928,7 +929,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5cA-cu-Iql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2244" y="-1497"/>
+            <point key="canvasLocation" x="2241" y="-1221"/>
         </scene>
         <!--课程名称-->
         <scene sceneID="Pty-bg-HjK">
@@ -1316,6 +1317,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="05J-mM-3iD" id="xhG-6E-jnV"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1428,7 +1432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGX-xg-cUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084" y="486"/>
+            <point key="canvasLocation" x="1084" y="542"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="C71-XU-oGI">
@@ -1478,11 +1482,11 @@
         <image name="videoImg" width="255" height="220"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lQI-n4-ewi"/>
-        <segue reference="w3m-OB-E4x"/>
-        <segue reference="zCN-fZ-yFA"/>
         <segue reference="cCq-a4-IJK"/>
         <segue reference="vy3-JY-MMv"/>
+        <segue reference="xcf-EB-1NO"/>
+        <segue reference="w3m-OB-E4x"/>
+        <segue reference="lQI-n4-ewi"/>
         <segue reference="MDH-ym-rtR"/>
     </inferredMetricsTieBreakers>
 </document>

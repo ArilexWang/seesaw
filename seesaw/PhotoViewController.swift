@@ -107,7 +107,7 @@ class PhotoViewController: UIViewController {
                     print("data:\(response.data)")
                     DispatchQueue.main.async {
                         let image = UIImage(data: response.data)
-                        
+                        self.performSegue(withIdentifier: "createItemSuccess", sender: self)
                     }
                 }
             }

@@ -11,7 +11,7 @@ import SwiftHTTP
 
 
 
-class CreateClassTableViewController: UITableViewController {
+class CreateClassTableViewController: UITableViewController,UITextFieldDelegate {
     
     @IBOutlet weak var tableCell: UITableViewCell!
    
@@ -34,7 +34,10 @@ class CreateClassTableViewController: UITableViewController {
         let notificationName2 = Notification.Name("selectDone")
         NotificationCenter.default.addObserver(self, selector: #selector(selectFinish(noti:)), name: notificationName2, object: nil)
         
-
+        NotificationCenter.default.addObserver(self, selector: #selector(textfileEditEnd), name: NSNotification.Name.UITextFieldTextDidEndEditing, object: nil)
+        
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -42,6 +45,11 @@ class CreateClassTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    func textfileEditEnd(){
+        print("edit end")
+        
+        
+    }
     
     func setButtonImg(){
         let cancelButton = UIButton.init(type: .custom)
@@ -163,12 +171,29 @@ class CreateClassTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print(indexPath.row)
         if indexPath.row == 1 {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.pickerContainer.frame.origin.y -= self.MOVE_SIZE
-            },completion:nil)
+            //self.className.resignFirstResponder()
+            if self.pickerContainer.frame.origin.y <= 417 {
+                self.className.resignFirstResponder()
+            }
+            else{
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.pickerContainer.frame.origin.y -= self.MOVE_SIZE
+                    print(self.pickerContainer.frame.origin.y)
+                    self.className.resignFirstResponder()
+                    //self.tableView.cellForRow(at: indexPath)?.isUserInteractionEnabled = false
+                },completion:nil)
+            }
+            
+            
+        }
+        else{
+            self.className.becomeFirstResponder()
+            //self.tableView.cellForRow(at: indexPath)?.isUserInteractionEnabled = true
+            self.tableView.visibleCells.last?.isUserInteractionEnabled = true
+            //self.tableCell.isUserInteractionEnabled = true
         }
         //self.tableView.cellForRow(at: indexPath)?.isUserInteractionEnabled = false
-        self.tableCell.isUserInteractionEnabled = false
+        
     }
     
     // MARK: - Table view data source
