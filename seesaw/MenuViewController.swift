@@ -12,7 +12,10 @@ import SwiftHTTP
 class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var menuNameArr:Array = [String]()
     var iconImage:Array = [UIImage]()
+    var menuCourseID:Array = [String]()
     
+    @IBOutlet weak var userView: UIView!
+    @IBOutlet weak var midBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userName: UILabel!
     
@@ -26,21 +29,74 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         userName.text = Global_userName
         menuNameArr = []
         
-        getCourseFromServer()
         
+        if currentStatu == TEACHER{
+            
+            getCourseFromServer()
+        }
+        
+        else{
+            midBtn.setImage(nil, for: .normal)
+            
+            midBtn.setTitleColor(UIColor.red, for: .normal)
+            
+            midBtn.setTitle("    退出登录", for: .normal)
+            
+            getTakesFromServer()
+            
+        }
         
         //监听器，监听创建课程事件
         let notificationName = Notification.Name("CreateCourse")
         NotificationCenter.default.addObserver(self, selector: #selector(createCourseDone(noti:)), name: notificationName, object: nil)
         
-        //iconImage = [UIImage(named:"defaultClassImg.png")!]
-        // Do any additional setup after loading the view.
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(MenuViewController.userViewClick(_:)))
+        self.userView.addGestureRecognizer(gesture)
+        
     }
-
+    
+    func userViewClick(_ sender:UITapGestureRecognizer) {
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let signOut = UIAlertAction(title: "退出登录", style: .destructive, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+            let signOutAlert = UIAlertController(title: nil, message: "确认退出登录吗", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title: "退出", style: UIAlertActionStyle.destructive, handler: { (alert: UIAlertAction) -> Void in
+                
+                self.performSegue(withIdentifier: "studentToStart", sender: self)
+                
+                signOutAlert.dismiss(animated: true, completion: nil)
+                
+            })
+            
+            let cancelAction = UIAlertAction(title: "放弃", style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction) -> Void in
+                
+                signOutAlert.dismiss(animated: true, completion: nil)
+                
+            })
+            
+            signOutAlert.addAction(okAction)
+            signOutAlert.addAction(cancelAction)
+            
+            self.present(signOutAlert, animated: true, completion: nil)
+            
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "放弃", style: .cancel, handler:  {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        
+        optionMenu.addAction(signOut)
+        optionMenu.addAction(cancelAction)
+        
+        present(optionMenu, animated: true, completion: nil)
+    }
     
     func getCourseFromServer(){
-        //print(Global_userEmail)
-        
         do{
             let serverController = serverAdd + "/getCourse/"
             let opt = try HTTP.GET(serverController,parameters: ["email": Global_userEmail])
@@ -49,19 +105,18 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                     
                 }
                 else{
-                    //print(response.text)
-                    let courseNames = response.text
-                    //print(courseNames)
-                    //courseNames?.components(separatedBy: " ")
-                    let names:Array = (courseNames?.components(separatedBy: " "))!
                     
+                    let courseNames = response.text
+                    
+
+                    let names:Array = (courseNames?.components(separatedBy: " "))!
                     
                     DispatchQueue.main.async {
                         self.menuNameArr = names
-                        //print(self.menuNameArr)
+                        
                         self.tableView.reloadData()
                     }
-                    //print("获取到数据：\(response.text)")
+                    
                 }
                 
             }
@@ -82,10 +137,8 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                     print(courseID)
                     //courseNames?.components(separatedBy: " ")
                     let ids:Array = (courseID?.components(separatedBy: " "))!
-                    
-                    
                     DispatchQueue.main.async {
-                        menuCourseID = ids
+                        self.menuCourseID = ids
                         //print(self.menuNameArr)
                         self.tableView.reloadData()
                     }
@@ -97,11 +150,35 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             print("请求失败：\(error)")
         }
         
-        
-        
-        
+    }
+    
+    
+    func getTakesFromServer(){
+        do{
+            let serverController = serverAdd + "/getTakes/"
+            let opt = try HTTP.GET(serverController,parameters: ["email": Global_userEmail,"courseid":currentCourseID])
+            opt.start{ response in
+                if let err = response.error{
+                    print(err.localizedDescription)
+                }
+                else{
+                    DispatchQueue.main.async {
+                        print(response.text)
+                        self.menuCourseID.append(String(describing: currentCourseID))
+                        self.menuNameArr.append(response.text!)
+                        self.tableView.reloadData()
+                    }
+                    
+                }
+                
+            }
+        }catch let error {
+            print("请求失败：\(error)")
+        }
         
     }
+    
+    
     
     func createCourseDone(noti: Notification){
         //print(noti.userInfo!["PASS"] as! String)
@@ -109,7 +186,30 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     @IBAction func createBtnClick(_ sender: Any) {
-        performSegue(withIdentifier: "segueToCreate", sender: self)
+        if currentStatu == TEACHER{
+            performSegue(withIdentifier: "segueToCreate", sender: self)
+        }
+        else {
+            let optionMenu = UIAlertController(title: nil, message: "确定退出登录吗？", preferredStyle: .actionSheet)
+            
+            let signOut = UIAlertAction(title: "退出登录", style: .destructive, handler: {
+                (alert: UIAlertAction!) -> Void in
+                self.performSegue(withIdentifier: "studentToStart", sender: self)
+                
+            })
+            
+            let cancelAction = UIAlertAction(title: "放弃", style: .cancel, handler:  {
+                (alert: UIAlertAction!) -> Void in
+            })
+            
+            
+            optionMenu.addAction(signOut)
+            optionMenu.addAction(cancelAction)
+            
+            present(optionMenu, animated: true, completion: nil)
+
+        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

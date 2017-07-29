@@ -14,6 +14,11 @@ var Global_userName:String?
 
 var Global_userEmail:String?
 
-var menuCourseID:Array = [String]()
+
 
 var currentCourseID:Int?
+
+let TEACHER = 0
+let STUDENT = 1
+
+var currentStatu:Int?

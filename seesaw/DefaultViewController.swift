@@ -68,7 +68,6 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
     }
     
-    
     //选择课程完毕调用
     func updateCurrentCourse(noti: Notification){
         
@@ -111,33 +110,48 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         
         
+        if currentStatu == TEACHER{
+            let plusButton = UIButton.init(type: .custom)
+            
+            plusButton.setImage(UIImage(named: "plusBtnImg.png"), for: UIControlState.normal)
+            
+            plusButton.addTarget(self, action: #selector(DefaultViewController.plusBtnClick), for: UIControlEvents.touchUpInside)
+            
+            plusButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            
+            let plusBarButton = UIBarButtonItem(customView: plusButton)
+            
+            let settingButton = UIButton.init(type: .custom)
+            
+            settingButton.setImage(UIImage(named: "settingBtnImg.png"), for: UIControlState.normal)
+            
+            settingButton.addTarget(self, action: #selector(DefaultViewController.setBtnClick), for: UIControlEvents.touchUpInside)
+            
+            settingButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+            
+            let settingBarButton = UIBarButtonItem(customView: settingButton)
+            
+            let gap = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+            gap.width = 20
+            
+            self.navigationItem.rightBarButtonItems = [plusBarButton, gap ,settingBarButton]
+        }
         
-        let plusButton = UIButton.init(type: .custom)
-        
-        plusButton.setImage(UIImage(named: "plusBtnImg.png"), for: UIControlState.normal)
-        
-        plusButton.addTarget(self, action: #selector(DefaultViewController.plusBtnClick), for: UIControlEvents.touchUpInside)
-        
-        plusButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        
-        let plusBarButton = UIBarButtonItem(customView: plusButton)
-        
-        
-        let settingButton = UIButton.init(type: .custom)
-        
-        settingButton.setImage(UIImage(named: "settingBtnImg.png"), for: UIControlState.normal)
-        
-        settingButton.addTarget(self, action: #selector(DefaultViewController.setBtnClick), for: UIControlEvents.touchUpInside)
-        
-        settingButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
-        
-        let settingBarButton = UIBarButtonItem(customView: settingButton)
-        
-        let gap = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        gap.width = 20
-
-        
-        self.navigationItem.rightBarButtonItems = [plusBarButton, gap ,settingBarButton]
+        //学生端
+        else {
+            let plusButton = UIButton.init(type: .custom)
+            
+            plusButton.setImage(UIImage(named: "plusBtnImg.png"), for: UIControlState.normal)
+            
+            plusButton.addTarget(self, action: #selector(DefaultViewController.stPlusBtnClick), for: UIControlEvents.touchUpInside)
+            
+            plusButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            
+            let plusBarButton = UIBarButtonItem(customView: plusButton)
+            
+            self.navigationItem.rightBarButtonItem = plusBarButton
+        }
+       
         
     }
     
@@ -167,6 +181,12 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         
         present(optionMenu, animated: true, completion: nil)
+    }
+    
+    
+    //学生端加号点击事件
+    func stPlusBtnClick(){
+        print("student plus")
     }
     
     
@@ -209,7 +229,7 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     func setBtnClick(){
-        
+        performSegue(withIdentifier: "segueToSetting", sender: self)
     }
     
     

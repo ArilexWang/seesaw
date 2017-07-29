@@ -131,9 +131,7 @@ class PhotoViewController: UIViewController {
      
         let cancelAction = UIAlertAction(title: "放弃", style: .cancel, handler:  {
             (alert: UIAlertAction!) -> Void in
-    })
-        
-        
+        })
         
         
         optionMenu.addAction(postToStudent)

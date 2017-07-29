@@ -1,22 +1,18 @@
 //
-//  TeacherSignInTableViewController.swift
+//  StudentSignUpTableViewController.swift
 //  seesaw
 //
-//  Created by Ricardo on 2017/7/23.
+//  Created by Ricardo on 2017/7/29.
 //  Copyright © 2017年 Ricardo. All rights reserved.
 //
 
 import UIKit
-import SwiftHTTP
 
-class TeacherSignInTableViewController: UITableViewController {
+class StudentSignUpTableViewController: UITableViewController {
 
-    @IBOutlet weak var emailText: UITextField!
-    @IBOutlet weak var passwordText: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setButton()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -29,7 +25,7 @@ class TeacherSignInTableViewController: UITableViewController {
         
         closeButton.setImage(UIImage(named: "back2.png"), for: UIControlState.normal)
         
-        closeButton.addTarget(self, action: #selector(CreateAccountTableViewController.backBtnClick), for: UIControlEvents.touchUpInside)
+        closeButton.addTarget(self, action: #selector(StudentSignUpTableViewController.backBtnClick), for: UIControlEvents.touchUpInside)
         
         closeButton.frame = CGRect(x: 0, y: 0, width: 12, height: 20)
         
@@ -52,77 +48,9 @@ class TeacherSignInTableViewController: UITableViewController {
     }
     
     func backBtnClick(){
-        performSegue(withIdentifier: "back", sender: self)
+        performSegue(withIdentifier: "backToStSign", sender: self)
     }
     
-    
-    func createAlert(titleText: String, messageText: String){
-        let alert = UIAlertController(title: titleText, message: messageText, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-            (action) in alert.dismiss(animated: true, completion: nil)
-        }))
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-    }
-    
-    func okBtnClick(){
-        let email: String = emailText.text!
-        let password: String = passwordText.text!
-        let serverController:String?
-        //教师登录
-        if currentStatu == TEACHER {
-            serverController = serverAdd + "/checkPassWord/"
-        }
-        //学生登录
-        else{
-            serverController = serverAdd + "/checkStudentPassword/"
-            
-        }
-        
-        do{
-            let opt = try HTTP.GET(serverController!,parameters: ["email": email, "password": password])
-            opt.start{ response in
-                if let err = response.error{
-                    print(err.localizedDescription)
-                    if(err.localizedDescription == "Could not connect to the server."){
-                        let message:String = "连接服务器失败"
-                        self.createAlert(titleText: "错误", messageText: message)
-                    }
-                    else{
-                        let message:String = "输入的用户名密码错误"
-                        self.createAlert(titleText: "错误", messageText: message)
-                    }
-                }
-                else{
-                    
-                    if currentStatu == TEACHER{
-                        DispatchQueue.main.async {
-                            Global_userName = response.text
-                            Global_userEmail = self.emailText.text
-                            self.performSegue(withIdentifier: "fromSignToDefault", sender: self)
-                        }
-                    }
-                    
-                    else {
-                        DispatchQueue.main.async {
-                            Global_userName = response.text
-                            Global_userEmail = self.emailText.text
-                            self.performSegue(withIdentifier: "fromSignToDefault", sender: self)
-                        }
-                    }
-                    
-                    //print("获取到数据：\(response.text)")
-                }
-                
-            }
-        }catch let error {
-            print("请求失败：\(error)")
-        }
-        
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -131,15 +59,15 @@ class TeacherSignInTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    //override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-    //    return 0
-    //}
-
-    //override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-      //  return 0
-    //}
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return 0
+//    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

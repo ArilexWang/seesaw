@@ -1,32 +1,32 @@
 //
-//  StartViewController.swift
+//  CourseCodeViewController.swift
 //  seesaw
 //
-//  Created by Ricardo on 2017/7/22.
+//  Created by Ricardo on 2017/7/29.
 //  Copyright © 2017年 Ricardo. All rights reserved.
 //
 
 import UIKit
 
-class StartViewController: UIViewController {
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        self.navigationController?.isNavigationBarHidden = true
-    }
-    
-    
+class CourseCodeViewController: UIViewController {
+
+    @IBOutlet weak var codeLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        codeLabel.layer.masksToBounds = true
+        codeLabel.layer.cornerRadius = 10
+        codeLabel.layer.borderColor = UIColor.init(colorWithHexValue: 0x5a99de).cgColor
+        
+        setCode(ID: 6)
 
         // Do any additional setup after loading the view.
     }
-    @IBAction func teacherBtnClick(_ sender: Any) {
-        currentStatu = TEACHER
-    }
-
-    @IBAction func studentBtnClick(_ sender: Any) {
-        currentStatu = STUDENT
+    
+    func setCode(ID: Int){
+        let strID = String(ID)
+        print(strID.md5())
+        
     }
 
     override func didReceiveMemoryWarning() {

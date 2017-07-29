@@ -71,8 +71,6 @@ class CreateAccountTableViewController: UITableViewController, UITextFieldDelega
     }
     
     
-    
-    
     func okBtnClick(){
         
         if firstNameText.text == "" {
@@ -97,39 +95,76 @@ class CreateAccountTableViewController: UITableViewController, UITextFieldDelega
             
         //right input
         else {
-        
             let name: String = firstNameText.text!
             let email: String = emailText.text!
             let password: String = passwordText.text!
             
             let parameters = ["username": name,"email": email,"password": password]
-            print(parameters) 
-            
-            
-            do{
-                let serverController = serverAdd + "/index/"
-                let opt = try HTTP.POST(serverController,parameters: parameters)
-                opt.start{ response in
-                    if let err = response.error{
-                        if(err.localizedDescription == "Could not connect to the server."){
-                            let message:String = "连接服务器失败"
-                            self.createAlert(titleText: "错误", messageText: message)
-                        } else{
-                            let message:String = "该邮箱已注册"
-                            self.createAlert(titleText: "错误", messageText: message)
+            print(parameters)
+            //教师新建账户
+            if currentStatu == TEACHER {
+                do{
+                    let serverController = serverAdd + "/index/"
+                    let opt = try HTTP.POST(serverController,parameters: parameters)
+                    opt.start{ response in
+                        if let err = response.error{
+                            if(err.localizedDescription == "Could not connect to the server."){
+                                let message:String = "连接服务器失败"
+                                self.createAlert(titleText: "错误", messageText: message)
+                            } else{
+                                let message:String = "该邮箱已注册"
+                                self.createAlert(titleText: "错误", messageText: message)
+                            }
+                        }
+                            
+                        else{
+                            DispatchQueue.main.async {
+                                Global_userName = name
+                                Global_userEmail = email
+                                self.performSegue(withIdentifier: "segueToClass", sender: self)
+                            }
                         }
                     }
-                    
-                    else{
-                        DispatchQueue.main.async {
-                            Global_userName = name
-                            Global_userEmail = email
-                            self.performSegue(withIdentifier: "segueToClass", sender: self)
-                        }
-                    }
+                }catch let error{
+                    print("error")
                 }
-            }catch let error{
-                print("error")
+
+            }
+            
+            //学生新建账户
+            else{
+                do{
+                    let serverController = serverAdd + "/createStudentAccount/"
+                    let opt = try HTTP.POST(serverController,parameters: ["username": name,"email": email,"password": password,"code": currentCourseID])
+                    opt.start{ response in
+                        if let err = response.error{
+                            if(err.localizedDescription == "Could not connect to the server."){
+                                let message:String = "连接服务器失败"
+                                self.createAlert(titleText: "错误", messageText: message)
+                            } else{
+                                let message:String = "该邮箱已注册"
+                                self.createAlert(titleText: "错误", messageText: message)
+                            }
+                        }
+                            
+                        else{
+                            
+                            DispatchQueue.main.async {
+                                Global_userName = name
+                                Global_userEmail = email
+                                self.performSegue(withIdentifier: "createToDefault", sender: self)
+                            }
+                            
+                            //print(response.text)
+                            
+                            
+                            
+                        }
+                    }
+                }catch let error{
+                    print("error")
+                }
+
             }
             
             

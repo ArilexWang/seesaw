@@ -1,36 +1,22 @@
 //
-//  TeacherSignViewController.swift
+//  StudentSignViewController.swift
 //  seesaw
 //
-//  Created by Ricardo on 2017/7/22.
+//  Created by Ricardo on 2017/7/29.
 //  Copyright © 2017年 Ricardo. All rights reserved.
 //
 
 import UIKit
 
-class TeacherSignViewController: UIViewController {
+class StudentSignViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if currentStatu == TEACHER {
-            self.navigationItem.title = "教师登录"
-        } else{
-            self.navigationItem.title = "学生登录"
-        }
         
         setButton()
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func newBtnClick(_ sender: Any) {
-        if currentStatu == TEACHER{
-            performSegue(withIdentifier: "segueNewTeacher", sender: self)
-        }
-        else{
-            performSegue(withIdentifier: "segueToJoinCode", sender: self)
-        }
-    }
     
     
     func setButton(){
@@ -38,7 +24,7 @@ class TeacherSignViewController: UIViewController {
         
         closeButton.setImage(UIImage(named: "closeImg.png"), for: UIControlState.normal)
         
-        closeButton.addTarget(self, action: #selector(TeacherSignViewController.closeBtnClick), for: UIControlEvents.touchUpInside)
+        closeButton.addTarget(self, action: #selector(StudentSignViewController.closeBtnClick), for: UIControlEvents.touchUpInside)
         
         closeButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         
@@ -48,9 +34,9 @@ class TeacherSignViewController: UIViewController {
     }
     
     func closeBtnClick(){
-        performSegue(withIdentifier: "backToDefault", sender: self)
+        performSegue(withIdentifier: "backToMain", sender: self)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
