@@ -18,15 +18,17 @@ class CourseCodeViewController: UIViewController {
         codeLabel.layer.cornerRadius = 10
         codeLabel.layer.borderColor = UIColor.init(colorWithHexValue: 0x5a99de).cgColor
         
-        setCode(ID: 6)
+        //let strCode = String(describing: currentCourseID)
+        
+        codeLabel.text = setCode(ID: currentCourseID!)
 
         // Do any additional setup after loading the view.
     }
     
-    func setCode(ID: Int){
+    func setCode(ID: Int) -> String {
         let strID = String(ID)
-        print(strID.md5())
         
+        return strID
     }
 
     override func didReceiveMemoryWarning() {

@@ -29,9 +29,7 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         userName.text = Global_userName
         menuNameArr = []
         
-        
         if currentStatu == TEACHER{
-            
             getCourseFromServer()
         }
         
@@ -54,6 +52,13 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         self.userView.addGestureRecognizer(gesture)
         
     }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        let notificationName = Notification.Name("CreateCourse")
+        NotificationCenter.default.removeObserver(self, name: notificationName, object: nil)
+    }
+    
     
     func userViewClick(_ sender:UITapGestureRecognizer) {
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -107,7 +112,6 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 else{
                     
                     let courseNames = response.text
-                    
 
                     let names:Array = (courseNames?.components(separatedBy: " "))!
                     
@@ -132,14 +136,14 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                     
                 }
                 else{
-                    //print(response.text)
+                    
                     let courseID = response.text
                     print(courseID)
-                    //courseNames?.components(separatedBy: " ")
+                    
                     let ids:Array = (courseID?.components(separatedBy: " "))!
                     DispatchQueue.main.async {
                         self.menuCourseID = ids
-                        //print(self.menuNameArr)
+                    
                         self.tableView.reloadData()
                     }
                     //print("获取到数据：\(response.text)")
@@ -163,7 +167,6 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 }
                 else{
                     DispatchQueue.main.async {
-                        print(response.text)
                         self.menuCourseID.append(String(describing: currentCourseID))
                         self.menuNameArr.append(response.text!)
                         self.tableView.reloadData()
@@ -181,7 +184,6 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     
     func createCourseDone(noti: Notification){
-        //print(noti.userInfo!["PASS"] as! String)
         self.tableView.reloadData()
     }
     
@@ -227,14 +229,11 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell") as! MenuTableViewCell
         
-        //print(menuNameArr)
-        //cell.imgIcon.image = iconImage[indexPath.row]
         cell.lblMenuName.text = menuNameArr[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print(menuCourseID[indexPath.row])
         currentCourseID = Int(menuCourseID[indexPath.row])
         revealViewController().revealToggle(animated: true)
         

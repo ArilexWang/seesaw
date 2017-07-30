@@ -1,7 +1,33 @@
 PODS:
+  - AFNetworking (2.5.0):
+    - AFNetworking/NSURLConnection (= 2.5.0)
+    - AFNetworking/NSURLSession (= 2.5.0)
+    - AFNetworking/Reachability (= 2.5.0)
+    - AFNetworking/Security (= 2.5.0)
+    - AFNetworking/Serialization (= 2.5.0)
+    - AFNetworking/UIKit (= 2.5.0)
+  - AFNetworking/NSURLConnection (2.5.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.0)
+  - AFNetworking/Security (2.5.0)
+  - AFNetworking/Serialization (2.5.0)
+  - AFNetworking/UIKit (2.5.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
   - Alamofire (4.5.0)
+  - HappyDNS (0.3.10)
   - JSONJoy-Swift (3.0.1)
+  - JSONKit-NoWarning (1.2)
   - JTAppleCalendar (7.0.4)
+  - Qiniu (7.0.20):
+    - AFNetworking (~> 2.0)
+    - HappyDNS (~> 0.3)
   - SwiftyJSON (3.1.4)
   - TRON (2.0.1):
     - Alamofire (~> 4.1)
@@ -14,17 +40,24 @@ PODS:
     - TRON/Core
 
 DEPENDENCIES:
+  - AFNetworking (= 2.5.0)
   - JSONJoy-Swift (~> 3.0.0)
+  - JSONKit-NoWarning (= 1.2)
   - JTAppleCalendar (~> 7.0)
+  - Qiniu (~> 7.0)
   - TRON (~> 2.0.0)
 
 SPEC CHECKSUMS:
+  AFNetworking: 96ac9bf3eda33582701cb1fcc5b896aa1e20311e
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
   JSONJoy-Swift: ef6eccdcf319412f149bbdd031b27f0430d5d576
+  JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
   JTAppleCalendar: 6def48ecd0daae1d5baaa45e813124c2a20b184d
+  Qiniu: 8958e70c02fb563c8c04d555bb5041441c5f4216
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TRON: 7b9adeb678fe0e25433d207f6a734aaf145fa9b5
 
-PODFILE CHECKSUM: 010918e5bad26bb6d82f2033d1a4695e7b77cd81
+PODFILE CHECKSUM: bd0abaaf12e527ce3974b6da5ddff95e121c1de7
 
 COCOAPODS: 1.2.1

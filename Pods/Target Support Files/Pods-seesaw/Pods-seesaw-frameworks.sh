@@ -89,16 +89,24 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HappyDNS/HappyDNS.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JSONJoy-Swift/JSONJoy.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JSONKit-NoWarning/JSONKit_NoWarning.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JTAppleCalendar/JTAppleCalendar.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Qiniu/Qiniu.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TRON/TRON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HappyDNS/HappyDNS.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JSONJoy-Swift/JSONJoy.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JSONKit-NoWarning/JSONKit_NoWarning.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JTAppleCalendar/JTAppleCalendar.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Qiniu/Qiniu.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TRON/TRON.framework"
 fi

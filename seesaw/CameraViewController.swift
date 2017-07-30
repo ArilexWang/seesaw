@@ -43,11 +43,15 @@ class CameraViewController: UIViewController {
         if let videoConnection = stillImageOutput.connection(withMediaType: AVMediaTypeVideo){
             stillImageOutput.captureStillImageAsynchronously(from: videoConnection, completionHandler: {
                 (imageDateSampleBuffer, error) in
-                let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDateSampleBuffer)
                 
-                self.phtotImage = UIImage(data: imageData!)
+                DispatchQueue.main.async {
+                    let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDateSampleBuffer)
+                    
+                    self.phtotImage = UIImage(data: imageData!)
+                    
+                    self.performSegue(withIdentifier: "segueToPhoto", sender: self)
+                }
                 
-                self.performSegue(withIdentifier: "segueToPhoto", sender: self)
                 
             })
         }

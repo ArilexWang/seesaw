@@ -12,6 +12,7 @@ import JSONJoy
 import SwiftyJSON
 import TRON
 
+
 class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     var imgsURL:Array = [String]()
@@ -34,33 +35,52 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        let notificationName = Notification.Name("getURLfinish")
+        NotificationCenter.default.removeObserver(self, name: notificationName, object: nil)
+        
+        let notificationName2 = Notification.Name("choseCourse")
+        NotificationCenter.default.removeObserver(self, name: notificationName2, object: nil)
+        
+        let notificationName3 = Notification.Name("getIMGfinish")
+        NotificationCenter.default.removeObserver(self, name: notificationName3, object: nil)
+    }
 
     
     func getUpdateURL(noti:Notification){
         self.imgsURL = noti.userInfo!["PASS"] as! [String]
-        print(self.imgsURL)
+        
+        print("url_num: \(self.imgsURL.count)")
+        print("item_num: \(self.itemImg.count)")
         
         if self.imgsURL.count != 0 {
             let session = URLSession(configuration: .default)
-            let downloadPicTask = session.dataTask(with: URL(string: self.imgsURL[0])!, completionHandler: { (data, response, error) in
-                if let e = error {
-                    print("Error downloading cat picture: \(e)")
-                } else {
-                    if let res = response as? HTTPURLResponse {
-                        if let imageData = data {
-                            let image = UIImage(data: imageData)
-                            self.itemImg.append(image!)
-                            let notificationName = Notification.Name("getIMGfinish")
-                            NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["PASS": self.itemImg])
-                        } else {
-                            print("Couldn't get image: Image is nil")
-                        }
+            for i in 0..<imgsURL.count{
+                let downloadPicTask = session.dataTask(with: URL(string: self.imgsURL[i])!, completionHandler: { (data, response, error) in
+                    if let e = error {
+                        print("Error downloading cat picture: \(e)")
                     } else {
-                        print("Couldn't get response code for some reason")
+                        if let res = response as? HTTPURLResponse {
+                            if let imageData = data {
+                                let image = UIImage(data: imageData)
+                                self.itemImg.append(image!)
+                                if(self.itemImg.count == self.imgsURL.count){
+                                    let notificationName = Notification.Name("getIMGfinish")
+                                    NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["PASS": self.itemImg])
+                                }
+                                
+                            } else {
+                                print("Couldn't get image: Image is nil")
+                            }
+                        } else {
+                            print("Couldn't get response code for some reason")
+                        }
                     }
-                }
-            })
-            downloadPicTask.resume()
+                })
+                downloadPicTask.resume()
+            }
+            
         }
         else{
             self.itemTableView.reloadData()
@@ -203,14 +223,17 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 else{
                     do{
                         let myjson = try JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [AnyObject]
+                        
+                        print(myjson.count)
                         //获取图片的URL地址
                         DispatchQueue.main.async {
                             for i in 0..<myjson.count{
                                 let item = myjson[i]
                                 var strItem = item as! String
-                                strItem = serverAdd + strItem
-                                //print(strItem)
+                                
+                                print(strItem)
                                 self.imgsURL.append(strItem)
+                                
                             }
                             let notificationName = Notification.Name("getURLfinish")
                             NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["PASS": self.imgsURL])

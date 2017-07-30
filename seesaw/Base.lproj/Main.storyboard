@@ -465,7 +465,6 @@
                                 <state key="normal" image="photoImg"/>
                                 <connections>
                                     <action selector="photoBtnClick:" destination="60G-pJ-Mkm" eventType="touchUpInside" id="5ou-kA-47E"/>
-                                    <segue destination="SfW-wV-puo" kind="show" identifier="segueToCamera" id="XcG-mQ-UKS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIl-09-FCY">
@@ -491,6 +490,7 @@
                     </view>
                     <connections>
                         <segue destination="2HV-5G-ahU" kind="show" identifier="segue_backToDefault" id="Wt8-Qp-P3T"/>
+                        <segue destination="SfW-wV-puo" kind="show" identifier="segueToCamera" id="cxv-bZ-m0V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3aj-Bq-rn2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -892,11 +892,12 @@
                     </view>
                     <connections>
                         <outlet property="codeLabel" destination="tCW-Kr-RSi" id="gjV-Pa-C5q"/>
+                        <segue destination="A64-aa-8Oz" kind="show" id="lg9-Wf-D3L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zsp-2p-ahL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2758" y="1432"/>
+            <point key="canvasLocation" x="2967" y="1538"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="dC6-DX-ALT">
@@ -916,6 +917,9 @@
                                     <constraint firstAttribute="height" constant="135" id="955-lI-MlF"/>
                                 </constraints>
                                 <state key="normal" image="classCode"/>
+                                <connections>
+                                    <segue destination="FWP-vp-R7g" kind="show" id="fP8-GQ-AES"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1480,7 +1484,7 @@
             <objects>
                 <tableViewController title="新课程" id="05J-mM-3iD" customClass="CreateClassTableViewController" customModule="seesaw" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="erO-tp-VYj">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="现在可以创建你的课程啦！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GT4-Jg-gmx">
@@ -1593,7 +1597,7 @@
                         <viewControllerLayoutGuide type="bottom" id="0xX-qg-VRi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rzA-Pw-ZUJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KMM-cR-syv">
@@ -1666,7 +1670,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Ah-j3-6bs" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cqr-sX-tIe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cqr-sX-tIe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -1940,15 +1944,16 @@
         <image name="videoImg" width="255" height="220"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MDH-ym-rtR"/>
-        <segue reference="vSG-SE-ldB"/>
+        <segue reference="GIE-SY-axV"/>
+        <segue reference="Wt8-Qp-P3T"/>
+        <segue reference="cxv-bZ-m0V"/>
         <segue reference="zCN-fZ-yFA"/>
         <segue reference="0P9-gW-6vy"/>
         <segue reference="NFF-zt-wYK"/>
+        <segue reference="vSG-SE-ldB"/>
         <segue reference="pGZ-kj-NXf"/>
         <segue reference="wNG-ua-FfC"/>
-        <segue reference="GIE-SY-axV"/>
-        <segue reference="wRV-Zx-dLq"/>
         <segue reference="yoC-pC-de9"/>
+        <segue reference="lg9-Wf-D3L"/>
     </inferredMetricsTieBreakers>
 </document>

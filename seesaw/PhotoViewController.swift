@@ -8,9 +8,18 @@
 
 import UIKit
 import SwiftHTTP
+import Qiniu
+import JSONKit_NoWarning
+
+
+let kQiniuBucket = "seesaw-image"
+let kQiniuAccessKey = "93L43E91oA1cbC9k40ZK2eSeOCqxxjJz1SsL4NGv"
+let kQiniuSecretKey = "2nALux7vEJkrcuH0ZOWUhW2bI6vIvvtqpysS71aH"
+
 
 class PhotoViewController: UIViewController {
     var photoImage:UIImage?
+    
     
     @IBOutlet weak var photoImgView: UIImageView!
     
@@ -21,8 +30,93 @@ class PhotoViewController: UIViewController {
         
         photoImgView.image = photoImage
         
+        let notificationName = Notification.Name("uploadImg")
+        NotificationCenter.default.addObserver(self, selector: #selector(uploadDone(noti:)), name: notificationName, object: nil)
+        
         // Do any additional setup after loading the view.
     }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        let notificationName = Notification.Name("uploadImg")
+        NotificationCenter.default.removeObserver(self, name: notificationName, object: nil)
+    }
+    
+    func uploadDone(noti: Notification){
+            print("upload success")
+            
+            var filename = noti.userInfo!["filename"] as! String
+            
+            do {
+                let serverController = serverAdd + "/uploadImg/"
+                
+                filename = "http://otvzyldeo.bkt.clouddn.com/" + filename + "?imageView2/2/w/500/h/500/q/30"
+                
+                let opt = try HTTP.POST(serverController, parameters: ["email": Global_userEmail,"courseid": currentCourseID,"img_path": filename])
+                opt.start { response in
+                    if let err = response.error{
+                        print(err.localizedDescription)
+                    }
+                    else{
+                        print("data:\(response.text)")
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "createItemSuccess", sender: self)
+                        }
+                    }
+                }
+                
+            } catch let error {
+                print("got an error creating the request: \(error)")
+            }
+        
+    }
+    
+    
+    func hmacsha1WithString(str: String, secretKey: String) -> NSData {
+        
+        let cKey  = secretKey.cString(using: String.Encoding.ascii)
+        let cData = str.cString(using: String.Encoding.ascii)
+        
+        var result = [CUnsignedChar](repeating: 0, count: Int(CC_SHA1_DIGEST_LENGTH))
+        CCHmac(CCHmacAlgorithm(kCCHmacAlgSHA1), cKey!, Int(strlen(cKey!)), cData!, Int(strlen(cData!)), &result)
+        let hmacData: NSData = NSData(bytes: result, length: (Int(CC_SHA1_DIGEST_LENGTH)))
+        return hmacData
+    }
+    
+    func createQiniuToken(fileName: String) -> String {
+        
+        let oneHourLater = NSDate().timeIntervalSince1970 + 3600
+        // 上传策略中，只有scope和deadline是必填的
+        let scope = fileName.isEmpty ? kQiniuBucket : kQiniuBucket + ":" + fileName;
+        let putPolicy: NSDictionary = ["scope": scope, "deadline": NSNumber(value: UInt64(oneHourLater))]
+        let encodedPutPolicy = QNUrlSafeBase64.encode(putPolicy.jsonString())
+        let sign = hmacsha1WithString(str: encodedPutPolicy!, secretKey: kQiniuSecretKey)
+        let encodedSign = QNUrlSafeBase64.encode(sign as Data!)
+        
+        return kQiniuAccessKey + ":" + encodedSign! + ":" + encodedPutPolicy!
+    }
+    
+    func uploadWithName(fileName: String, content: UIImage) {
+        // 如果覆盖已有的文件，则指定文件名。否则如果同名文件已存在，会上传失败
+        let token = createQiniuToken(fileName: fileName)
+        
+        var uploader: QNUploadManager = QNUploadManager()
+        
+        let preimage = content.fixOrientation()
+        
+        let data = UIImagePNGRepresentation(preimage!)
+        
+        uploader.put(data, key: fileName, token: token, complete: { (info, key, resp) -> Void in
+            if (info?.isOK)! {
+                let notificationName = Notification.Name("uploadImg")
+                NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["filename": fileName])
+                
+            } else {
+                NSLog("Error: " + (info?.error.localizedDescription)!)
+            }
+        }, option: nil)
+    }
+    
     
     
     func setButtonImg(){
@@ -88,34 +182,20 @@ class PhotoViewController: UIViewController {
     }
     
     func okBtnClick(){
-        print(saveImageToDocumentDirectory(photoImage!))
+        //print(saveImageToDocumentDirectory(photoImage!))
         let path = saveImageToDocumentDirectory(photoImage!)
         print("imapath:\(path)")
-        let fileUrl = URL(fileURLWithPath: path)
-        do {
-            let serverController = serverAdd + "/uploadImg/"
-            print("currentid:\(currentCourseID)")
-            let opt = try HTTP.POST(serverController, parameters: ["email": Global_userEmail,"courseid": currentCourseID,"img": Upload(fileUrl: fileUrl)])
-            opt.start { response in
-                
-                if let err = response.error{
-                    print(err.localizedDescription)
-                   
-                }
-                    
-                else{
-                    print("data:\(response.data)")
-                    DispatchQueue.main.async {
-                        let image = UIImage(data: response.data)
-                        self.performSegue(withIdentifier: "createItemSuccess", sender: self)
-                    }
-                }
-            }
-            
-            
-        } catch let error {
-            print("got an error creating the request: \(error)")
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMddhhmmss"
+        
+        let currentDateString = dateFormatter.string(from: Date())
+        
+        var filename = currentDateString.appending(".jpg")
+        
+        
+        
+        uploadWithName(fileName: filename, content: photoImage!)
+        
     }
     
     func cancelBtnClick(_ sender: Any) {

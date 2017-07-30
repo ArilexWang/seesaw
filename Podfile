@@ -6,4 +6,7 @@ target 'seesaw' do
     pod 'JTAppleCalendar', '~> 7.0'
     pod 'JSONJoy-Swift', '~> 3.0.0'
     pod 'TRON', '~> 2.0.0'
+    pod 'JSONKit-NoWarning', '1.2'
+    pod 'AFNetworking', '2.5.0'
+    pod 'Qiniu', '~> 7.0'
 end

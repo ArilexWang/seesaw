@@ -12,6 +12,8 @@ class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setButtonImg()
 
         // Do any additional setup after loading the view.
     }
