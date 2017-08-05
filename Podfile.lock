@@ -28,6 +28,8 @@ PODS:
   - Qiniu (7.0.20):
     - AFNetworking (~> 2.0)
     - HappyDNS (~> 0.3)
+  - SwiftDate (4.0.14)
+  - SwiftHTTP (2.0.2)
   - SwiftyJSON (3.1.4)
   - TRON (2.0.1):
     - Alamofire (~> 4.1)
@@ -38,6 +40,7 @@ PODS:
     - Alamofire (~> 4.1)
     - SwiftyJSON (~> 3.1)
     - TRON/Core
+  - UITextView+Placeholder (1.2.0)
 
 DEPENDENCIES:
   - AFNetworking (= 2.5.0)
@@ -45,7 +48,10 @@ DEPENDENCIES:
   - JSONKit-NoWarning (= 1.2)
   - JTAppleCalendar (~> 7.0)
   - Qiniu (~> 7.0)
+  - SwiftDate (~> 4.0.13)
+  - SwiftHTTP (~> 2.0.0)
   - TRON (~> 2.0.0)
+  - UITextView+Placeholder (~> 1.2)
 
 SPEC CHECKSUMS:
   AFNetworking: 96ac9bf3eda33582701cb1fcc5b896aa1e20311e
@@ -55,9 +61,12 @@ SPEC CHECKSUMS:
   JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
   JTAppleCalendar: 6def48ecd0daae1d5baaa45e813124c2a20b184d
   Qiniu: 8958e70c02fb563c8c04d555bb5041441c5f4216
+  SwiftDate: 4ef029fd3117cc287fe642658b9aca2217628976
+  SwiftHTTP: faa1a5f7670568ffc9361898229dbe84a6088468
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TRON: 7b9adeb678fe0e25433d207f6a734aaf145fa9b5
+  UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: bd0abaaf12e527ce3974b6da5ddff95e121c1de7
+PODFILE CHECKSUM: 3936c0be93e03699c5badac74ced7542ff07a219
 
 COCOAPODS: 1.2.1

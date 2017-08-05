@@ -8,42 +8,113 @@
 
 import UIKit
 import SwiftHTTP
+import SwiftyJSON
 
 
 
-class CreateClassTableViewController: UITableViewController,UITextFieldDelegate {
+class CreateClassTableViewController: UITableViewController,UITextFieldDelegate, UIPickerViewDelegate,UIPickerViewDataSource {
+    
+    @IBOutlet weak var gradeText: UITextField!
+    
+    
+    @IBOutlet weak var timePicker: UIPickerView!
+    
+    let groupNum = ["1","2","3","4","5","6","7","8","9"]
+    
+    let gradeArray = ["学前班","一年级","二年级","三年级","四年级","五年级","六年级","其他"]
+    
+    let timeArray = ["周一","周二","周三","周四","周五","周六","周日"]
+    
+    let weekTimeArrar = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
     
     @IBOutlet weak var tableCell: UITableViewCell!
-   
-
-    @IBOutlet weak var pickerContainer: UIView!
     
-    @IBOutlet weak var gradeText: UILabel!
+    @IBOutlet weak var groupNumPicker: UIPickerView!
     
     @IBOutlet weak var className: UITextField!
+    
+    var grade: String?
+    var weekTime: String?
+    var group: Int?
+    
     let MOVE_SIZE:CGFloat = 250
+    
+    let gradePickerView = UIPickerView()
+  
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        if pickerView == groupNumPicker{
+            return groupNum[row]
+        }
+        else if pickerView == gradePickerView{
+            return gradeArray[row]
+        }
+        else{
+            return timeArray[row]
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        if pickerView == groupNumPicker{
+            return groupNum.count
+        }
+        else if pickerView == gradePickerView{
+            return gradeArray.count
+        }
+        else{
+            return timeArray.count
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //组数选择器
+        if pickerView == groupNumPicker{
+            group = Int(groupNum[row])
+        }
+        //年级选择器
+        else if pickerView == gradePickerView{
+            gradeText.text = gradeArray[row]
+        }
+        //上课时间选择器
+        else{
+           weekTime = timeArray[row]
+        }
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
         setButtonImg()
+    
+        gradePickerView.delegate = self
+        gradePickerView.dataSource = self
         
-        let notificationName = Notification.Name("GetUpdateNoti")
-        NotificationCenter.default.addObserver(self, selector: #selector(getUpdateNoti(noti:)), name: notificationName, object: nil)
+        gradePickerView.backgroundColor = UIColor.white
         
-        let notificationName2 = Notification.Name("selectDone")
-        NotificationCenter.default.addObserver(self, selector: #selector(selectFinish(noti:)), name: notificationName2, object: nil)
+        gradeText.inputView = gradePickerView
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textfileEditEnd), name: NSNotification.Name.UITextFieldTextDidEndEditing, object: nil)
+        // 增加一個觸控事件
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CreateClassTableViewController.hideKeyboard(tapG:)))
+        
+        tap.cancelsTouchesInView = false
+        
+        // 加在最基底的 self.view 上
+        self.view.addGestureRecognizer(tap)
         
         
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    func hideKeyboard(tapG:UITapGestureRecognizer){
+        self.view.endEditing(true)
+    }
+    
     
     func textfileEditEnd(){
         print("edit end")
@@ -99,8 +170,17 @@ class CreateClassTableViewController: UITableViewController,UITextFieldDelegate 
     }
     
     func okBtnClick(){
-        let strClassName = className.text!
-        let strGrade = gradeText.text!
+        let strClassName = className.text! as String
+        let strGrade = gradeText.text as! String
+        
+        
+        let index = timeArray.index(of: weekTime!)
+        
+        let strWeek = weekTimeArrar[index!]
+        
+        
+        let iGroup = group
+        
         
         if strClassName == ""{
             createAlert(titleText: "错误", messageText: "请输入课程名字")
@@ -108,10 +188,9 @@ class CreateClassTableViewController: UITableViewController,UITextFieldDelegate 
         else if strGrade == "请选择"{
             createAlert(titleText: "错误", messageText: "请选择年级")
         }
-        
         //输入正确，向服务器发送请求
         else{
-            let parameters = ["email": Global_userEmail,"courseName": strClassName,"grade":strGrade]
+            let parameters = ["email": Global_userEmail,"courseName": strClassName,"grade":strGrade,"time": strWeek,"group_num": iGroup ?? 1] as [String : Any]
             //print(parameters)
             do{
                 let serverController = serverAdd + "/createCourse/"
@@ -122,6 +201,8 @@ class CreateClassTableViewController: UITableViewController,UITextFieldDelegate 
                     }
                         
                     else{
+                        let myjson = JSON(response.data)
+                        print(myjson["create_time"])
                         //print(response.data)
                         DispatchQueue.main.async {
                             let notificationName = Notification.Name("CreateCourse")
@@ -141,23 +222,7 @@ class CreateClassTableViewController: UITableViewController,UITextFieldDelegate 
     }
     
     
-    func getUpdateNoti(noti:Notification){
-        gradeText.text = noti.userInfo!["PASS"] as! String
-        //print(noti.userInfo!["PASS"])
-    }
     
-    func selectFinish(noti:Notification){
-        //print(noti.userInfo!["PASS"])
-        gradeText.text = noti.userInfo!["PASS"] as! String
-        UIView.animate(withDuration: 0.3, animations: {
-            self.pickerContainer.frame.origin.y += self.MOVE_SIZE
-        },completion:nil)
-        self.tableCell.isUserInteractionEnabled = true
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 535
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -165,34 +230,9 @@ class CreateClassTableViewController: UITableViewController,UITextFieldDelegate 
     }
     
     public func updateGradeText(gradeText: String) {
-        self.gradeText.text = gradeText
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print(indexPath.row)
-        if indexPath.row == 1 {
-            //self.className.resignFirstResponder()
-            if self.pickerContainer.frame.origin.y <= 417 {
-                self.className.resignFirstResponder()
-            }
-            else{
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.pickerContainer.frame.origin.y -= self.MOVE_SIZE
-                    print(self.pickerContainer.frame.origin.y)
-                    self.className.resignFirstResponder()
-                    //self.tableView.cellForRow(at: indexPath)?.isUserInteractionEnabled = false
-                },completion:nil)
-            }
-            
-            
-        }
-        else{
-            self.className.becomeFirstResponder()
-            //self.tableView.cellForRow(at: indexPath)?.isUserInteractionEnabled = true
-            self.tableView.visibleCells.last?.isUserInteractionEnabled = true
-            //self.tableCell.isUserInteractionEnabled = true
-        }
-        //self.tableView.cellForRow(at: indexPath)?.isUserInteractionEnabled = false
         
     }
     

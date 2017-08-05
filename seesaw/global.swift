@@ -14,11 +14,13 @@ var Global_userName:String?
 
 var Global_userEmail:String?
 
-
-
 var currentCourseID:Int?
+var currentCourseName: String?
 
 let TEACHER = 0
 let STUDENT = 1
 
 var currentStatu:Int?
+
+
+let WEEK_DIC = ["Monday":2,"Tuesday":3,"Wednesday":4,"Thursday":5,"Friday":6,"Saturday":7,"Sunday":1]

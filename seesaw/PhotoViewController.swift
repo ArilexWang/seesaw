@@ -20,17 +20,29 @@ let kQiniuSecretKey = "2nALux7vEJkrcuH0ZOWUhW2bI6vIvvtqpysS71aH"
 class PhotoViewController: UIViewController {
     var photoImage:UIImage?
     
+    var originView:String?
+    var originViewContent: String?
+    var originViewSectionID: Int?
+    
+    var filePath: String?
     
     @IBOutlet weak var photoImgView: UIImageView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        
         setButtonImg()
         
         photoImgView.image = photoImage
         
         let notificationName = Notification.Name("uploadImg")
+        
         NotificationCenter.default.addObserver(self, selector: #selector(uploadDone(noti:)), name: notificationName, object: nil)
         
         // Do any additional setup after loading the view.
@@ -38,14 +50,19 @@ class PhotoViewController: UIViewController {
     
     
     override func viewDidDisappear(_ animated: Bool) {
+        
         let notificationName = Notification.Name("uploadImg")
+        
         NotificationCenter.default.removeObserver(self, name: notificationName, object: nil)
+    
     }
     
     func uploadDone(noti: Notification){
-            print("upload success")
+        print("upload success")
             
-            var filename = noti.userInfo!["filename"] as! String
+        var filename = noti.userInfo!["filename"] as! String
+        
+        if currentStatu == TEACHER {
             
             do {
                 let serverController = serverAdd + "/uploadImg/"
@@ -53,12 +70,13 @@ class PhotoViewController: UIViewController {
                 filename = "http://otvzyldeo.bkt.clouddn.com/" + filename + "?imageView2/2/w/500/h/500/q/30"
                 
                 let opt = try HTTP.POST(serverController, parameters: ["email": Global_userEmail,"courseid": currentCourseID,"img_path": filename])
+                
                 opt.start { response in
                     if let err = response.error{
                         print(err.localizedDescription)
                     }
                     else{
-                        print("data:\(response.text)")
+                        
                         DispatchQueue.main.async {
                             self.performSegue(withIdentifier: "createItemSuccess", sender: self)
                         }
@@ -69,8 +87,58 @@ class PhotoViewController: UIViewController {
                 print("got an error creating the request: \(error)")
             }
         
+        }
+        
+        else {
+            self.filePath = "http://otvzyldeo.bkt.clouddn.com/" + filename + "?imageView2/2/w/500/h/500/q/30"
+            if self.originView == "Homework"{
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "photoToHomework", sender: self)
+                }
+                
+            } else {
+                do {
+                    let serverController = serverAdd + "/uploadStImg/"
+                    
+                    filename = "http://otvzyldeo.bkt.clouddn.com/" + filename + "?imageView2/2/w/500/h/500/q/30"
+                    
+                    let opt = try HTTP.POST(serverController, parameters: ["email": Global_userEmail,"courseid": currentCourseID,"img_path": filename])
+                    
+                    opt.start { response in
+                        if let err = response.error{
+                            print(err.localizedDescription)
+                        }
+                        else{
+                            
+                            DispatchQueue.main.async {
+                                self.performSegue(withIdentifier: "createItemSuccess", sender: self)
+                            }
+                        }
+                    }
+                    
+                } catch let error {
+                    print("got an error creating the request: \(error)")
+                }
+            }
+            
+            
+
+        }
+        
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "photoToHomework" {
+            if let studentNewWorkViewController = segue.destination as? StudentNewWorkViewController{
+                studentNewWorkViewController.strContent = self.originViewContent
+                studentNewWorkViewController.image = self.photoImage
+                studentNewWorkViewController.filePath = self.filePath
+                studentNewWorkViewController.sectionID = self.originViewSectionID
+            }
+        }
+    }
     
     func hmacsha1WithString(str: String, secretKey: String) -> NSData {
         
@@ -86,7 +154,7 @@ class PhotoViewController: UIViewController {
     func createQiniuToken(fileName: String) -> String {
         
         let oneHourLater = NSDate().timeIntervalSince1970 + 3600
-        // 上传策略中，只有scope和deadline是必填的
+
         let scope = fileName.isEmpty ? kQiniuBucket : kQiniuBucket + ":" + fileName;
         let putPolicy: NSDictionary = ["scope": scope, "deadline": NSNumber(value: UInt64(oneHourLater))]
         let encodedPutPolicy = QNUrlSafeBase64.encode(putPolicy.jsonString())
@@ -95,6 +163,7 @@ class PhotoViewController: UIViewController {
         
         return kQiniuAccessKey + ":" + encodedSign! + ":" + encodedPutPolicy!
     }
+    
     
     func uploadWithName(fileName: String, content: UIImage) {
         // 如果覆盖已有的文件，则指定文件名。否则如果同名文件已存在，会上传失败
@@ -145,10 +214,11 @@ class PhotoViewController: UIViewController {
         let okBarButton = UIBarButtonItem(customView: okButton)
         
         self.navigationItem.rightBarButtonItem = okBarButton
-        
-
-        
     }
+    
+    
+    
+
     
     func saveImageToDocumentDirectory(_ chosenImage: UIImage) -> String {
         let directoryPath =  NSHomeDirectory().appending("/Documents/")
@@ -191,8 +261,6 @@ class PhotoViewController: UIViewController {
         let currentDateString = dateFormatter.string(from: Date())
         
         var filename = currentDateString.appending(".jpg")
-        
-        
         
         uploadWithName(fileName: filename, content: photoImage!)
         

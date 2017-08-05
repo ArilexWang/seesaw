@@ -25,7 +25,9 @@ class CameraViewController: UIViewController {
     
     var stillImageOutput: AVCaptureStillImageOutput = AVCaptureStillImageOutput()
     
-    
+    var originView: String?
+    var originViewContent: String?
+    var originViewSectionID: Int?
     
     func setCamera(_ sender: Any) {
         frontCamera = !frontCamera
@@ -60,7 +62,11 @@ class CameraViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToPhoto" {
             if let photoViewController = segue.destination as? PhotoViewController{
+                print(self.originView)
                 photoViewController.photoImage = self.phtotImage
+                photoViewController.originView = self.originView
+                photoViewController.originViewContent = self.originViewContent
+                photoViewController.originViewSectionID = self.originViewSectionID
             }
         }
     }

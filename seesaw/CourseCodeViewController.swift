@@ -21,6 +21,8 @@ class CourseCodeViewController: UIViewController {
         //let strCode = String(describing: currentCourseID)
         
         codeLabel.text = setCode(ID: currentCourseID!)
+        
+        setButtonImg()
 
         // Do any additional setup after loading the view.
     }
@@ -36,7 +38,26 @@ class CourseCodeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func setButtonImg(){
+        let cancelButton = UIButton.init(type: .custom)
+        
+        cancelButton.setImage(UIImage(named: "cancelImg.png"), for: UIControlState.normal)
+        
+        cancelButton.addTarget(self, action: #selector(CourseCodeViewController.closeBtnClick), for: UIControlEvents.touchUpInside)
+        
+        cancelButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        
+        let setCameraBarButton = UIBarButtonItem(customView: cancelButton)
+        
+        self.navigationItem.leftBarButtonItem = setCameraBarButton
+        
+    }
+    
+    func closeBtnClick(){
+        performSegue(withIdentifier: "codeToSet", sender: self)
+    }
+    
+    
     /*
     // MARK: - Navigation
 

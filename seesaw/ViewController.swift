@@ -15,17 +15,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
     @IBOutlet weak var buttonView: UIView!
-    @IBOutlet weak var className: UILabel!
-    @IBOutlet weak var navigationView: UIView!
-    @IBOutlet weak var settingBtn: UIButton!
-    @IBOutlet weak var plusBtn: UIButton!
-    @IBOutlet weak var listBtn: UIButton!
+    
     @IBOutlet weak var calendarBtn: UIButton!
     @IBOutlet weak var JournalBtn: UIButton!
     
     let selectedMonthColor = UIColor.white
     let monthColor = UIColor(colorWithHexValue: 0xa6a6a6)
-    
     
     let formatter = DateFormatter()
     
@@ -35,30 +30,31 @@ class ViewController: UIViewController {
         //init calendarView
         setupCalendarView();
         
-        setupButtonView()
+        setButtonImg()
+        //setupButtonView()
         
     }
     
-    @IBAction func listBtnClick(_ sender: Any) {
-        listBtn.setImage(#imageLiteral(resourceName: "listViewSeleted"), for: .normal)
-        calendarBtn.setImage(#imageLiteral(resourceName: "calendarImg"), for: .normal)
-        
-    }
-
-    @IBAction func calendarBtnClick(_ sender: Any) {
-        listBtn.setImage(#imageLiteral(resourceName: "listImg"), for: .normal)
-        calendarBtn.setImage(#imageLiteral(resourceName: "calendarSeleted"), for: .normal)
-        
-    }
+//    @IBAction func listBtnClick(_ sender: Any) {
+//        listBtn.setImage(#imageLiteral(resourceName: "listViewSeleted"), for: .normal)
+//        calendarBtn.setImage(#imageLiteral(resourceName: "calendarImg"), for: .normal)
+//        
+//    }
+//
+//    @IBAction func calendarBtnClick(_ sender: Any) {
+//        listBtn.setImage(#imageLiteral(resourceName: "listImg"), for: .normal)
+//        calendarBtn.setImage(#imageLiteral(resourceName: "calendarSeleted"), for: .normal)
+//        
+//    }
     
-    @IBAction func plubBtnClick(_ sender: Any) {
+    func plubBtnClick() {
         
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let postToStudent = UIAlertAction(title: "发送到学生日记", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             
-            self.performSegue(withIdentifier: "segueToJournal", sender: self)
+            self.performSegue(withIdentifier: "calendarToJour", sender: self)
             
         })
         
@@ -83,9 +79,76 @@ class ViewController: UIViewController {
     }
     
     
-    func setupButtonView(){
-        settingBtn.setImage(#imageLiteral(resourceName: "settingBtnSelected"), for: .highlighted)
-        JournalBtn.setImage(#imageLiteral(resourceName: "JournalSeleted"), for: .normal)
+//    func setupButtonView(){
+//        settingBtn.setImage(#imageLiteral(resourceName: "settingBtnSelected"), for: .highlighted)
+//        JournalBtn.setImage(#imageLiteral(resourceName: "JournalSeleted"), for: .normal)
+//        
+//    }
+    
+    func setBtnClick(){
+        performSegue(withIdentifier: "calendarToSet", sender: self)
+    }
+    
+    
+    func setButtonImg(){
+        
+        let button = UIButton.init(type: .custom)
+        //set image for button
+        button.setImage(UIImage(named: "defaultHead.png"), for: UIControlState.normal)
+        //add function for button
+        button.addTarget(revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: UIControlEvents.touchUpInside)
+        //set frame
+        button.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        
+        let barButton = UIBarButtonItem(customView: button)
+        
+        
+        self.navigationItem.leftBarButtonItem = barButton
+        
+        
+        
+        if currentStatu == TEACHER{
+            let plusButton = UIButton.init(type: .custom)
+            
+            plusButton.setImage(UIImage(named: "plusBtnImg.png"), for: UIControlState.normal)
+            
+            plusButton.addTarget(self, action: #selector(ViewController.plubBtnClick), for: UIControlEvents.touchUpInside)
+            
+            plusButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            
+            let plusBarButton = UIBarButtonItem(customView: plusButton)
+            
+            let settingButton = UIButton.init(type: .custom)
+            
+            settingButton.setImage(UIImage(named: "settingBtnImg.png"), for: UIControlState.normal)
+            
+            settingButton.addTarget(self, action: #selector(ViewController.setBtnClick), for: UIControlEvents.touchUpInside)
+            
+            settingButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+            
+            let settingBarButton = UIBarButtonItem(customView: settingButton)
+            
+            let gap = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+            gap.width = 20
+            
+            self.navigationItem.rightBarButtonItems = [plusBarButton, gap ,settingBarButton]
+        }
+            
+            //学生端
+        else {
+            let plusButton = UIButton.init(type: .custom)
+            
+            plusButton.setImage(UIImage(named: "plusBtnImg.png"), for: UIControlState.normal)
+            
+            plusButton.addTarget(self, action: #selector(DefaultViewController.stPlusBtnClick), for: UIControlEvents.touchUpInside)
+            
+            plusButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            
+            let plusBarButton = UIBarButtonItem(customView: plusButton)
+            
+            self.navigationItem.rightBarButtonItem = plusBarButton
+        }
+        
         
     }
     
@@ -239,9 +302,6 @@ extension ViewController: JTAppleCalendarViewDelegate {
         handleCelltextColor(view: cell, cellState: cellState)
         handleCurrentDay(view: cell, cellState: cellState)
     }
-//    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
-//        setupViewsOfCalendar(from: visibleDates)
-//    }
     
 }
 

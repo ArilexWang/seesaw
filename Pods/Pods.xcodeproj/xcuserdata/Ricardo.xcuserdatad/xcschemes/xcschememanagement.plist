@@ -44,12 +44,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftDate.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftHTTP.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>TRON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UITextView+Placeholder.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -62,12 +77,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1E33920EA25A5D9D5224CB886E5B1AB7</key>
+		<key>31D4CAD6FE50E07E7F63BD9556980BE3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>422FE9CB2C631E4307F971082EC41D12</key>
+		<key>3B3011D880B470255553E6EA61A1D25E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6CD75AF56A1CD19F24DADEE512CD56D5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,7 +97,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>95B1BD6799021A77008CA586F5951485</key>
+		<key>B51DCFBF4755F3AD604A95D02251E4CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,7 +117,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D32FF1BE68DEA3E73ED686243BBE9339</key>
+		<key>CDF7EA1B6AE268F0A66B41E798C25DC2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D6C085DF1EE07D4BEDA216A507DD7D66</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE9C72B4D879BE3927130646FF616AFD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

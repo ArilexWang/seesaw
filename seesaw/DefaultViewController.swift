@@ -17,6 +17,7 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
 
     var imgsURL:Array = [String]()
     var itemImg:Array = [UIImage]()
+    var imgOwner:Array = [String]()
     
     @IBOutlet weak var itemTableView: UITableView!
     override func viewDidLoad() {
@@ -32,6 +33,9 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
         let notificationName3 = Notification.Name("getIMGfinish")
         NotificationCenter.default.addObserver(self, selector: #selector(updateItemImg(noti:)), name: notificationName3, object: nil)
         
+        let notificationName4 = Notification.Name("getOwnerFinsh")
+        NotificationCenter.default.addObserver(self, selector: #selector(updateItemOwner(noti:)), name: notificationName4, object: nil)
+        
 
         // Do any additional setup after loading the view.
     }
@@ -45,14 +49,14 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         let notificationName3 = Notification.Name("getIMGfinish")
         NotificationCenter.default.removeObserver(self, name: notificationName3, object: nil)
+        
+        let notificationName4 = Notification.Name("getOwnerFinsh")
+        NotificationCenter.default.removeObserver(self, name: notificationName4, object: nil)
     }
 
     
     func getUpdateURL(noti:Notification){
         self.imgsURL = noti.userInfo!["PASS"] as! [String]
-        
-        print("url_num: \(self.imgsURL.count)")
-        print("item_num: \(self.itemImg.count)")
         
         if self.imgsURL.count != 0 {
             let session = URLSession(configuration: .default)
@@ -92,7 +96,7 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func updateCurrentCourse(noti: Notification){
         
         currentCourseID = noti.userInfo?["PASS"] as! Int
-        let currentCourseName = noti.userInfo?["NAME"] as! String
+        currentCourseName = noti.userInfo?["NAME"] as! String
         self.navigationItem.title = currentCourseName
         
         imgsURL = []
@@ -104,8 +108,12 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     func updateItemImg(noti: Notification){
         self.itemImg = noti.userInfo?["PASS"] as! [UIImage]
-        print(self.itemImg.count)
-        itemTableView.reloadData()
+        
+        getItemOwner(email: Global_userEmail!, id: currentCourseID!)
+        
+        
+        
+        //itemTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -127,6 +135,7 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         
         self.navigationItem.leftBarButtonItem = barButton
+        
         
         
         
@@ -155,6 +164,10 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
             gap.width = 20
             
             self.navigationItem.rightBarButtonItems = [plusBarButton, gap ,settingBarButton]
+            
+            
+            
+            
         }
         
         //学生端
@@ -170,12 +183,26 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
             let plusBarButton = UIBarButtonItem(customView: plusButton)
             
             self.navigationItem.rightBarButtonItem = plusBarButton
+            
+            
+            
+            if let tabBarController = self.tabBarController {
+                let indexToRemove = 2
+                if indexToRemove < (tabBarController.viewControllers?.count)! {
+                    var viewControllers = tabBarController.viewControllers
+                    viewControllers?.remove(at: indexToRemove)
+                    tabBarController.viewControllers = viewControllers
+                }
+            }
         }
        
         
     }
     
     func plusBtnClick(){
+        
+       
+        
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let postToStudent = UIAlertAction(title: "发送到学生日记", style: .default, handler: {
@@ -206,14 +233,16 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     //学生端加号点击事件
     func stPlusBtnClick(){
-        print("student plus")
+        performSegue(withIdentifier: "segueToJournal", sender: self)
     }
     
     
     func getItemURL(email:String, id:Int){
         do{
             let serverController = serverAdd + "/getImg/"
-            let opt = try HTTP.GET(serverController,parameters: ["email": email,"courseid":id])
+            
+            //let opt = try HTTP.GET(serverController,parameters: ["email": email,"courseid":id])
+            let opt = try HTTP.GET(serverController,parameters: ["courseid":id])
             opt.start{ response in
                 
                 if let err = response.error{
@@ -251,6 +280,58 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
     }
     
+    func getItemOwner(email:String, id:Int){
+        do{
+            let serverController = serverAdd + "/getImgOwner/"
+            //let opt = try HTTP.GET(serverController,parameters: ["email": email,"courseid":id])
+            let opt = try HTTP.GET(serverController,parameters: ["courseid":id])
+            opt.start{ response in
+                
+                if let err = response.error{
+                    print(err)
+                }
+                    
+                else{
+                    do{
+                        let myjson = try JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [AnyObject]
+                        
+                        print(myjson.count)
+                        
+                        DispatchQueue.main.async {
+                            for i in 0..<myjson.count{
+                                let item = myjson[i]
+                                var strItem = item as! String
+                                print(strItem)
+                                self.imgOwner.append(strItem)
+                                
+                            }
+                            let notificationName = Notification.Name("getOwnerFinsh")
+                            NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["PASS": self.imgOwner])
+                        }
+                        
+                    } catch{
+                        print("error")
+                    }
+                    
+                }
+                
+            }
+        }catch let error {
+            print("请求失败：\(error)")
+        }
+
+    }
+    
+    
+    func updateItemOwner(noti: Notification){
+        self.imgOwner = noti.userInfo?["PASS"] as! [String]
+        itemTableView.reloadData()
+    }
+    
+    
+    
+    
+    
     func setBtnClick(){
         performSegue(withIdentifier: "segueToSetting", sender: self)
     }
@@ -279,6 +360,9 @@ class DefaultViewController: UIViewController,UITableViewDelegate,UITableViewDat
             cell.itemImg.image = itemImg[indexPath.row]
         }
         
+        if imgOwner.count != 0{
+            cell.itemOwner.text = imgOwner[indexPath.row]
+        }
         
         return cell
     }

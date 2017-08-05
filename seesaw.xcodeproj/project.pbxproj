@@ -21,6 +21,21 @@
 		8C117A001F24EE91003E7E95 /* TeacherSignInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1179FF1F24EE91003E7E95 /* TeacherSignInTableViewController.swift */; };
 		8C117A0C1F2652F3003E7E95 /* CreateClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C117A0B1F2652F3003E7E95 /* CreateClassTableViewController.swift */; };
 		8C19A3BA1F265A9100E9F8D8 /* GradePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C19A3B91F265A9100E9F8D8 /* GradePickerViewController.swift */; };
+		8C2F40731F30A6F100ED79F3 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F40721F30A6F100ED79F3 /* CustomTabBarViewController.swift */; };
+		8C2F407C1F31BB7100ED79F3 /* GroupDefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F407B1F31BB7100ED79F3 /* GroupDefaultViewController.swift */; };
+		8C2F407E1F31BE9200ED79F3 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F407D1F31BE9200ED79F3 /* GroupTableViewCell.swift */; };
+		8C2F40821F31FDB400ED79F3 /* GroupMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F40811F31FDB400ED79F3 /* GroupMemberViewController.swift */; };
+		8C2F40841F32124800ED79F3 /* GroupMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F40831F32124800ED79F3 /* GroupMemberTableViewCell.swift */; };
+		8C2F40861F32236100ED79F3 /* NoGroupMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F40851F32236100ED79F3 /* NoGroupMemberViewController.swift */; };
+		8C2F40881F32257B00ED79F3 /* NoGroupMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F40871F32257B00ED79F3 /* NoGroupMemberTableViewCell.swift */; };
+		8C2F40921F3315BB00ED79F3 /* TeacherCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F40911F3315BB00ED79F3 /* TeacherCourseViewController.swift */; };
+		8C2F40941F33168200ED79F3 /* NewCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F40931F33168200ED79F3 /* NewCourseViewController.swift */; };
+		8C2F40981F333D3800ED79F3 /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F40971F333D3800ED79F3 /* CourseTableViewCell.swift */; };
+		8C2F409A1F335AA200ED79F3 /* HomeworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F40991F335AA200ED79F3 /* HomeworkViewController.swift */; };
+		8C2F409C1F335B0A00ED79F3 /* HomeworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F409B1F335B0A00ED79F3 /* HomeworkTableViewCell.swift */; };
+		8C2F409F1F33614100ED79F3 /* StudentNewWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F409E1F33614100ED79F3 /* StudentNewWorkViewController.swift */; };
+		8C2F40A11F33672400ED79F3 /* HomeworkByGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F40A01F33672400ED79F3 /* HomeworkByGroupViewController.swift */; };
+		8C2F40A31F336B0700ED79F3 /* HomeworkByGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F40A21F336B0700ED79F3 /* HomeworkByGroupTableViewCell.swift */; };
 		8C38F0751F1BB4CE00F7861D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38F0741F1BB4CE00F7861D /* Extension.swift */; };
 		8C43F26F1F1CE7BC00E72426 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43F26E1F1CE7BC00E72426 /* JournalViewController.swift */; };
 		8C43F2711F1D061300E72426 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43F2701F1D061300E72426 /* CameraViewController.swift */; };
@@ -136,6 +151,21 @@
 		8C1179FF1F24EE91003E7E95 /* TeacherSignInTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherSignInTableViewController.swift; sourceTree = "<group>"; };
 		8C117A0B1F2652F3003E7E95 /* CreateClassTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateClassTableViewController.swift; sourceTree = "<group>"; };
 		8C19A3B91F265A9100E9F8D8 /* GradePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradePickerViewController.swift; sourceTree = "<group>"; };
+		8C2F40721F30A6F100ED79F3 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
+		8C2F407B1F31BB7100ED79F3 /* GroupDefaultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDefaultViewController.swift; sourceTree = "<group>"; };
+		8C2F407D1F31BE9200ED79F3 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
+		8C2F40811F31FDB400ED79F3 /* GroupMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMemberViewController.swift; sourceTree = "<group>"; };
+		8C2F40831F32124800ED79F3 /* GroupMemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMemberTableViewCell.swift; sourceTree = "<group>"; };
+		8C2F40851F32236100ED79F3 /* NoGroupMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoGroupMemberViewController.swift; sourceTree = "<group>"; };
+		8C2F40871F32257B00ED79F3 /* NoGroupMemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoGroupMemberTableViewCell.swift; sourceTree = "<group>"; };
+		8C2F40911F3315BB00ED79F3 /* TeacherCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherCourseViewController.swift; sourceTree = "<group>"; };
+		8C2F40931F33168200ED79F3 /* NewCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCourseViewController.swift; sourceTree = "<group>"; };
+		8C2F40971F333D3800ED79F3 /* CourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
+		8C2F40991F335AA200ED79F3 /* HomeworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkViewController.swift; sourceTree = "<group>"; };
+		8C2F409B1F335B0A00ED79F3 /* HomeworkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkTableViewCell.swift; sourceTree = "<group>"; };
+		8C2F409E1F33614100ED79F3 /* StudentNewWorkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentNewWorkViewController.swift; sourceTree = "<group>"; };
+		8C2F40A01F33672400ED79F3 /* HomeworkByGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkByGroupViewController.swift; sourceTree = "<group>"; };
+		8C2F40A21F336B0700ED79F3 /* HomeworkByGroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkByGroupTableViewCell.swift; sourceTree = "<group>"; };
 		8C38F0741F1BB4CE00F7861D /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		8C43F26E1F1CE7BC00E72426 /* JournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		8C43F2701F1D061300E72426 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +242,9 @@
 		8C04445D1F1B000C0025C4B4 /* seesaw */ = {
 			isa = PBXGroup;
 			children = (
+				8C2F409D1F33611D00ED79F3 /* StudentCourse */,
+				8C2F408A1F33150C00ED79F3 /* TeacherCourse */,
+				8C2F407A1F31BB2E00ED79F3 /* TeacherGroup */,
 				8C6491111F2C29DA0082049C /* SettingView */,
 				8C6491061F2C170A0082049C /* StudentView */,
 				8C38F0731F1BB4A700F7861D /* extension */,
@@ -244,8 +277,44 @@
 				8C19A3B91F265A9100E9F8D8 /* GradePickerViewController.swift */,
 				8CDD3F5D1F28751300A11EDE /* global.swift */,
 				8CDD3F731F29ED2000A11EDE /* MyError.swift */,
+				8C2F40721F30A6F100ED79F3 /* CustomTabBarViewController.swift */,
 			);
 			path = seesaw;
+			sourceTree = "<group>";
+		};
+		8C2F407A1F31BB2E00ED79F3 /* TeacherGroup */ = {
+			isa = PBXGroup;
+			children = (
+				8C2F407B1F31BB7100ED79F3 /* GroupDefaultViewController.swift */,
+				8C2F407D1F31BE9200ED79F3 /* GroupTableViewCell.swift */,
+				8C2F40811F31FDB400ED79F3 /* GroupMemberViewController.swift */,
+				8C2F40831F32124800ED79F3 /* GroupMemberTableViewCell.swift */,
+				8C2F40851F32236100ED79F3 /* NoGroupMemberViewController.swift */,
+				8C2F40871F32257B00ED79F3 /* NoGroupMemberTableViewCell.swift */,
+				8C2F40A01F33672400ED79F3 /* HomeworkByGroupViewController.swift */,
+				8C2F40A21F336B0700ED79F3 /* HomeworkByGroupTableViewCell.swift */,
+			);
+			name = TeacherGroup;
+			sourceTree = "<group>";
+		};
+		8C2F408A1F33150C00ED79F3 /* TeacherCourse */ = {
+			isa = PBXGroup;
+			children = (
+				8C2F40911F3315BB00ED79F3 /* TeacherCourseViewController.swift */,
+				8C2F40971F333D3800ED79F3 /* CourseTableViewCell.swift */,
+				8C2F40931F33168200ED79F3 /* NewCourseViewController.swift */,
+				8C2F40991F335AA200ED79F3 /* HomeworkViewController.swift */,
+				8C2F409B1F335B0A00ED79F3 /* HomeworkTableViewCell.swift */,
+			);
+			name = TeacherCourse;
+			sourceTree = "<group>";
+		};
+		8C2F409D1F33611D00ED79F3 /* StudentCourse */ = {
+			isa = PBXGroup;
+			children = (
+				8C2F409E1F33614100ED79F3 /* StudentNewWorkViewController.swift */,
+			);
+			name = StudentCourse;
 			sourceTree = "<group>";
 		};
 		8C38F0731F1BB4A700F7861D /* extension */ = {
@@ -475,22 +544,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C64910E1F2C186D0082049C /* StudentSignViewController.swift in Sources */,
+				8C2F40861F32236100ED79F3 /* NoGroupMemberViewController.swift in Sources */,
 				8CDD3F741F29ED2000A11EDE /* MyError.swift in Sources */,
 				8C05F7301F2289FB00DE2D57 /* CreateAccountTableViewController.swift in Sources */,
+				8C2F407E1F31BE9200ED79F3 /* GroupTableViewCell.swift in Sources */,
 				8C7BE8D11F21FE9600630A9A /* DefaultViewController.swift in Sources */,
+				8C2F40841F32124800ED79F3 /* GroupMemberTableViewCell.swift in Sources */,
 				8C117A0C1F2652F3003E7E95 /* CreateClassTableViewController.swift in Sources */,
 				8C557CAF1F24981500F76A18 /* testViewController.swift in Sources */,
+				8C2F40921F3315BB00ED79F3 /* TeacherCourseViewController.swift in Sources */,
 				8C6491171F2C39F60082049C /* JoinCodeViewController.swift in Sources */,
 				8CDD3F5E1F28751300A11EDE /* global.swift in Sources */,
 				8C05F72E1F2288AA00DE2D57 /* StartViewController.swift in Sources */,
+				8C2F40A31F336B0700ED79F3 /* HomeworkByGroupTableViewCell.swift in Sources */,
 				8C6491151F2C30290082049C /* CourseCodeViewController.swift in Sources */,
+				8C2F40821F31FDB400ED79F3 /* GroupMemberViewController.swift in Sources */,
 				8CDD3F6A1F28F66600A11EDE /* Item.swift in Sources */,
+				8C2F407C1F31BB7100ED79F3 /* GroupDefaultViewController.swift in Sources */,
 				8C0444611F1B000C0025C4B4 /* ViewController.swift in Sources */,
 				8CDD3F721F29EC2D00A11EDE /* ItemsResponse.swift in Sources */,
 				8C117A001F24EE91003E7E95 /* TeacherSignInTableViewController.swift in Sources */,
+				8C2F40A11F33672400ED79F3 /* HomeworkByGroupViewController.swift in Sources */,
 				8C05F7261F2250A800DE2D57 /* MenuTableViewCell.swift in Sources */,
 				8C19A3BA1F265A9100E9F8D8 /* GradePickerViewController.swift in Sources */,
+				8C2F409A1F335AA200ED79F3 /* HomeworkViewController.swift in Sources */,
 				8C7BE8CF1F1E5C4F00630A9A /* RecordingViewController.swift in Sources */,
+				8C2F409C1F335B0A00ED79F3 /* HomeworkTableViewCell.swift in Sources */,
+				8C2F40981F333D3800ED79F3 /* CourseTableViewCell.swift in Sources */,
 				8C0E45A91F1B137D00D8E379 /* CustomCell.swift in Sources */,
 				8C05F72C1F22876B00DE2D57 /* TeacherSignViewController.swift in Sources */,
 				8C05F7221F22500100DE2D57 /* MenuViewController.swift in Sources */,
@@ -500,6 +580,10 @@
 				8C43F26F1F1CE7BC00E72426 /* JournalViewController.swift in Sources */,
 				8C7BE8CD1F1DBF0000630A9A /* PhotoViewController.swift in Sources */,
 				8C6491131F2C29F10082049C /* SettingViewController.swift in Sources */,
+				8C2F40941F33168200ED79F3 /* NewCourseViewController.swift in Sources */,
+				8C2F409F1F33614100ED79F3 /* StudentNewWorkViewController.swift in Sources */,
+				8C2F40731F30A6F100ED79F3 /* CustomTabBarViewController.swift in Sources */,
+				8C2F40881F32257B00ED79F3 /* NoGroupMemberTableViewCell.swift in Sources */,
 				8C7BE8D51F22080100630A9A /* SWRevealViewController.m in Sources */,
 				8CDD3F661F28D20B00A11EDE /* ItemTableViewCell.swift in Sources */,
 				8C43F2711F1D061300E72426 /* CameraViewController.swift in Sources */,

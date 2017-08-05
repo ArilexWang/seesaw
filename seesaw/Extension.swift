@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import SwiftyJSON
 
 extension UIColor{
     convenience init(colorWithHexValue value: Int, alpha:CGFloat = 1.0){
@@ -170,6 +170,48 @@ extension UIView {
         border.frame = CGRect(x: 0, y: 0, width: width, height: self.frame.size.height)
         self.layer.addSublayer(border)
     }
+}
+
+class Formatter {
+    
+    private static var internalJsonDateFormatter: DateFormatter?
+    private static var internalJsonDateTimeFormatter: DateFormatter?
+    
+    static var jsonDateFormatter: DateFormatter {
+        if (internalJsonDateFormatter == nil) {
+            internalJsonDateFormatter = DateFormatter()
+            internalJsonDateFormatter!.dateFormat = "yyyy-MM-dd"
+        }
+        return internalJsonDateFormatter!
+    }
+    
+    static var jsonDateTimeFormatter: DateFormatter {
+        if (internalJsonDateTimeFormatter == nil) {
+            internalJsonDateTimeFormatter = DateFormatter()
+            internalJsonDateTimeFormatter!.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"
+        }
+        return internalJsonDateTimeFormatter!
+    }
+    
+}
+
+
+extension JSON {
+    public var date: NSDate? {
+        get {
+            if let str = self.string {
+                return JSON.jsonDateFormatter.date(from: str) as! NSDate
+            }
+            return nil
+        }
+    }
+    
+    private static let jsonDateFormatter: DateFormatter = {
+        let fmt = DateFormatter()
+        fmt.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        fmt.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
+        return fmt
+    }()
 }
 
 

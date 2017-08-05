@@ -26,6 +26,10 @@ class JournalViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = closeBarButton
 
         // Do any additional setup after loading the view.
+        
+        
+        self.tabBarController?.tabBar.isHidden = true
+        
     }
     
     func closeBtnClick(){

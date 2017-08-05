@@ -138,7 +138,6 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 else{
                     
                     let courseID = response.text
-                    print(courseID)
                     
                     let ids:Array = (courseID?.components(separatedBy: " "))!
                     DispatchQueue.main.async {
@@ -160,15 +159,22 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func getTakesFromServer(){
         do{
             let serverController = serverAdd + "/getTakes/"
-            let opt = try HTTP.GET(serverController,parameters: ["email": Global_userEmail,"courseid":currentCourseID])
+            let opt = try HTTP.GET(serverController,parameters: ["email": Global_userEmail])
             opt.start{ response in
                 if let err = response.error{
                     print(err.localizedDescription)
                 }
                 else{
+                    print(response.text)
                     DispatchQueue.main.async {
-                        self.menuCourseID.append(String(describing: currentCourseID))
-                        self.menuNameArr.append(response.text!)
+                        //self.menuCourseID.append(String(describing: currentCourseID))
+                        let resp = response.text
+                        
+                        let course:Array = (resp?.components(separatedBy: " "))!
+                        
+                        self.menuNameArr.append(course[0])
+                        self.menuCourseID.append(course[1])
+                        print(response.text)
                         self.tableView.reloadData()
                     }
                     
@@ -235,8 +241,9 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         currentCourseID = Int(menuCourseID[indexPath.row])
-        revealViewController().revealToggle(animated: true)
         
+        
+        revealViewController().revealToggle(animated: true)
         
         //发送通知，选择课程完成
         let notificationName = Notification.Name("choseCourse")

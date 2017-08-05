@@ -9,4 +9,7 @@ target 'seesaw' do
     pod 'JSONKit-NoWarning', '1.2'
     pod 'AFNetworking', '2.5.0'
     pod 'Qiniu', '~> 7.0'
+    pod 'SwiftHTTP', '~> 2.0.0'
+    pod 'SwiftDate', '~> 4.0.13'
+    pod 'UITextView+Placeholder', '~> 1.2'
 end
